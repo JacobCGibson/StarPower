@@ -1,0 +1,16 @@
+# ninja log v5
+8	1396	0	CMakeFiles/hello_ar_native.dir/src/main/cpp/background_renderer.cc.o	198bb45bb37548d7
+11	1412	0	CMakeFiles/hello_ar_native.dir/src/main/cpp/point_cloud_renderer.cc.o	10420798ca86c56f
+4	1437	0	CMakeFiles/hello_ar_native.dir/src/main/cpp/jni_interface.cc.o	8383edfbc8a4f312
+6	1462	0	CMakeFiles/hello_ar_native.dir/src/main/cpp/obj_renderer.cc.o	f82409ef32c91a4a
+1	1594	0	CMakeFiles/hello_ar_native.dir/src/main/cpp/hello_ar_application.cc.o	27e117d58d41b1ee
+10	1640	0	CMakeFiles/hello_ar_native.dir/src/main/cpp/plane_renderer.cc.o	2048d2cd728629b3
+13	1907	0	CMakeFiles/hello_ar_native.dir/src/main/cpp/util.cc.o	999d8d65892c7d5e
+1907	2054	0	../../../../build/intermediates/cmake/debug/obj/x86/libhello_ar_native.so	2da028c1163056ad
+5	134	0	../../../../build/intermediates/cmake/debug/obj/x86/libhello_ar_native.so	2da028c1163056ad
+5	138	0	../../../../build/intermediates/cmake/debug/obj/x86/libhello_ar_native.so	2da028c1163056ad
+3	242	0	../../../../build/intermediates/cmake/debug/obj/x86/libhello_ar_native.so	2da028c1163056ad
+3	118	0	../../../../build/intermediates/cmake/debug/obj/x86/libhello_ar_native.so	2da028c1163056ad
+3	120	0	../../../../build/intermediates/cmake/debug/obj/x86/libhello_ar_native.so	2da028c1163056ad
+3	116	0	../../../../build/intermediates/cmake/debug/obj/x86/libhello_ar_native.so	2da028c1163056ad
+3	117	0	../../../../build/intermediates/cmake/debug/obj/x86/libhello_ar_native.so	2da028c1163056ad

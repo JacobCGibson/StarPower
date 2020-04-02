@@ -1,0 +1,21 @@
+{
+  "buildFiles": [
+    "C:\\Users\\micha\\OneDrive\\Juniata\\Software Engineering\\StarPower\\samples\\hello_ar_c\\app\\CMakeLists.txt"
+  ],
+  "cleanCommands": [
+    "C:\\Users\\micha\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build \"C:\\Users\\micha\\OneDrive\\Juniata\\Software Engineering\\StarPower\\samples\\hello_ar_c\\app\\.cxx\\cmake\\debug\\arm64-v8a\" --target clean"
+  ],
+  "libraries": {
+    "arcore-Debug-arm64-v8a": {
+      "artifactName": "arcore",
+      "abi": "arm64-v8a",
+      "output": "C:\\Users\\micha\\OneDrive\\Juniata\\Software Engineering\\StarPower\\samples\\hello_ar_c\\app\\build\\arcore-native\\jni\\arm64-v8a\\libarcore_sdk_c.so"
+    },
+    "hello_ar_native-Debug-arm64-v8a": {
+      "artifactName": "hello_ar_native",
+      "buildCommand": "C:\\Users\\micha\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build \"C:\\Users\\micha\\OneDrive\\Juniata\\Software Engineering\\StarPower\\samples\\hello_ar_c\\app\\.cxx\\cmake\\debug\\arm64-v8a\" --target hello_ar_native",
+      "abi": "arm64-v8a",
+      "output": "C:\\Users\\micha\\OneDrive\\Juniata\\Software Engineering\\StarPower\\samples\\hello_ar_c\\app\\build\\intermediates\\cmake\\debug\\obj\\arm64-v8a\\libhello_ar_native.so"
+    }
+  }
+}

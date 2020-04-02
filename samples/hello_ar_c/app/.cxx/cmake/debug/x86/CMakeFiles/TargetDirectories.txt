@@ -1,0 +1,3 @@
+C:/Users/micha/OneDrive/Juniata/Software Engineering/StarPower/samples/hello_ar_c/app/.cxx/cmake/debug/x86/CMakeFiles/hello_ar_native.dir
+C:/Users/micha/OneDrive/Juniata/Software Engineering/StarPower/samples/hello_ar_c/app/.cxx/cmake/debug/x86/CMakeFiles/edit_cache.dir
+C:/Users/micha/OneDrive/Juniata/Software Engineering/StarPower/samples/hello_ar_c/app/.cxx/cmake/debug/x86/CMakeFiles/rebuild_cache.dir

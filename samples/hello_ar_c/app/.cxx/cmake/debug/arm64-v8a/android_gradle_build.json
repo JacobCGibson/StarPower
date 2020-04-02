@@ -1,0 +1,85 @@
+
+{
+	"buildFiles" : 
+	[
+		"C:/Users/micha/OneDrive/Juniata/Software Engineering/StarPower/samples/hello_ar_c/app/CMakeLists.txt"
+	],
+	"cleanCommands" : 
+	[
+		"C:\\Users\\micha\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build \"C:\\Users\\micha\\OneDrive\\Juniata\\Software Engineering\\StarPower\\samples\\hello_ar_c\\app\\.cxx\\cmake\\debug\\arm64-v8a\" --target clean"
+	],
+	"cppFileExtensions" : [ "cc" ],
+	"libraries" : 
+	{
+		"arcore-Debug-arm64-v8a" : 
+		{
+			"abi" : "arm64-v8a",
+			"artifactName" : "arcore",
+			"buildType" : "debug",
+			"output" : "C:\\Users\\micha\\OneDrive\\Juniata\\Software Engineering\\StarPower\\samples\\hello_ar_c\\app\\build/arcore-native/jni/arm64-v8a/libarcore_sdk_c.so",
+			"toolchain" : "1418879165"
+		},
+		"hello_ar_native-Debug-arm64-v8a" : 
+		{
+			"abi" : "arm64-v8a",
+			"artifactName" : "hello_ar_native",
+			"buildCommand" : "C:\\Users\\micha\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build \"C:\\Users\\micha\\OneDrive\\Juniata\\Software Engineering\\StarPower\\samples\\hello_ar_c\\app\\.cxx\\cmake\\debug\\arm64-v8a\" --target hello_ar_native",
+			"buildType" : "debug",
+			"files" : 
+			[
+				
+				{
+					"flags" : "  --target=aarch64-none-linux-android24 --gcc-toolchain=C:/Users/micha/AppData/Local/Android/Sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/micha/AppData/Local/Android/Sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -Dhello_ar_native_EXPORTS -I..\\..\\..\\..\\src\\main\\cpp -I\"C:\\Users\\micha\\OneDrive\\Juniata\\Software Engineering\\StarPower\\samples\\hello_ar_c\\..\\..\\libraries\\glm\" -isystem \"C:\\Users\\micha\\OneDrive\\Juniata\\Software Engineering\\StarPower\\samples\\hello_ar_c\\..\\..\\libraries\\include\"  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -std=c++11 -Wall -O0 -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "C:/Users/micha/OneDrive/Juniata/Software Engineering/StarPower/samples/hello_ar_c/app/src/main/cpp/background_renderer.cc",
+					"workingDirectory" : "C:/Users/micha/OneDrive/Juniata/Software Engineering/StarPower/samples/hello_ar_c/app/.cxx/cmake/debug/arm64-v8a"
+				},
+				
+				{
+					"flags" : "  --target=aarch64-none-linux-android24 --gcc-toolchain=C:/Users/micha/AppData/Local/Android/Sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/micha/AppData/Local/Android/Sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -Dhello_ar_native_EXPORTS -I..\\..\\..\\..\\src\\main\\cpp -I\"C:\\Users\\micha\\OneDrive\\Juniata\\Software Engineering\\StarPower\\samples\\hello_ar_c\\..\\..\\libraries\\glm\" -isystem \"C:\\Users\\micha\\OneDrive\\Juniata\\Software Engineering\\StarPower\\samples\\hello_ar_c\\..\\..\\libraries\\include\"  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -std=c++11 -Wall -O0 -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "C:/Users/micha/OneDrive/Juniata/Software Engineering/StarPower/samples/hello_ar_c/app/src/main/cpp/hello_ar_application.cc",
+					"workingDirectory" : "C:/Users/micha/OneDrive/Juniata/Software Engineering/StarPower/samples/hello_ar_c/app/.cxx/cmake/debug/arm64-v8a"
+				},
+				
+				{
+					"flags" : "  --target=aarch64-none-linux-android24 --gcc-toolchain=C:/Users/micha/AppData/Local/Android/Sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/micha/AppData/Local/Android/Sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -Dhello_ar_native_EXPORTS -I..\\..\\..\\..\\src\\main\\cpp -I\"C:\\Users\\micha\\OneDrive\\Juniata\\Software Engineering\\StarPower\\samples\\hello_ar_c\\..\\..\\libraries\\glm\" -isystem \"C:\\Users\\micha\\OneDrive\\Juniata\\Software Engineering\\StarPower\\samples\\hello_ar_c\\..\\..\\libraries\\include\"  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -std=c++11 -Wall -O0 -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "C:/Users/micha/OneDrive/Juniata/Software Engineering/StarPower/samples/hello_ar_c/app/src/main/cpp/jni_interface.cc",
+					"workingDirectory" : "C:/Users/micha/OneDrive/Juniata/Software Engineering/StarPower/samples/hello_ar_c/app/.cxx/cmake/debug/arm64-v8a"
+				},
+				
+				{
+					"flags" : "  --target=aarch64-none-linux-android24 --gcc-toolchain=C:/Users/micha/AppData/Local/Android/Sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/micha/AppData/Local/Android/Sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -Dhello_ar_native_EXPORTS -I..\\..\\..\\..\\src\\main\\cpp -I\"C:\\Users\\micha\\OneDrive\\Juniata\\Software Engineering\\StarPower\\samples\\hello_ar_c\\..\\..\\libraries\\glm\" -isystem \"C:\\Users\\micha\\OneDrive\\Juniata\\Software Engineering\\StarPower\\samples\\hello_ar_c\\..\\..\\libraries\\include\"  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -std=c++11 -Wall -O0 -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "C:/Users/micha/OneDrive/Juniata/Software Engineering/StarPower/samples/hello_ar_c/app/src/main/cpp/obj_renderer.cc",
+					"workingDirectory" : "C:/Users/micha/OneDrive/Juniata/Software Engineering/StarPower/samples/hello_ar_c/app/.cxx/cmake/debug/arm64-v8a"
+				},
+				
+				{
+					"flags" : "  --target=aarch64-none-linux-android24 --gcc-toolchain=C:/Users/micha/AppData/Local/Android/Sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/micha/AppData/Local/Android/Sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -Dhello_ar_native_EXPORTS -I..\\..\\..\\..\\src\\main\\cpp -I\"C:\\Users\\micha\\OneDrive\\Juniata\\Software Engineering\\StarPower\\samples\\hello_ar_c\\..\\..\\libraries\\glm\" -isystem \"C:\\Users\\micha\\OneDrive\\Juniata\\Software Engineering\\StarPower\\samples\\hello_ar_c\\..\\..\\libraries\\include\"  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -std=c++11 -Wall -O0 -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "C:/Users/micha/OneDrive/Juniata/Software Engineering/StarPower/samples/hello_ar_c/app/src/main/cpp/plane_renderer.cc",
+					"workingDirectory" : "C:/Users/micha/OneDrive/Juniata/Software Engineering/StarPower/samples/hello_ar_c/app/.cxx/cmake/debug/arm64-v8a"
+				},
+				
+				{
+					"flags" : "  --target=aarch64-none-linux-android24 --gcc-toolchain=C:/Users/micha/AppData/Local/Android/Sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/micha/AppData/Local/Android/Sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -Dhello_ar_native_EXPORTS -I..\\..\\..\\..\\src\\main\\cpp -I\"C:\\Users\\micha\\OneDrive\\Juniata\\Software Engineering\\StarPower\\samples\\hello_ar_c\\..\\..\\libraries\\glm\" -isystem \"C:\\Users\\micha\\OneDrive\\Juniata\\Software Engineering\\StarPower\\samples\\hello_ar_c\\..\\..\\libraries\\include\"  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -std=c++11 -Wall -O0 -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "C:/Users/micha/OneDrive/Juniata/Software Engineering/StarPower/samples/hello_ar_c/app/src/main/cpp/point_cloud_renderer.cc",
+					"workingDirectory" : "C:/Users/micha/OneDrive/Juniata/Software Engineering/StarPower/samples/hello_ar_c/app/.cxx/cmake/debug/arm64-v8a"
+				},
+				
+				{
+					"flags" : "  --target=aarch64-none-linux-android24 --gcc-toolchain=C:/Users/micha/AppData/Local/Android/Sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/micha/AppData/Local/Android/Sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -Dhello_ar_native_EXPORTS -I..\\..\\..\\..\\src\\main\\cpp -I\"C:\\Users\\micha\\OneDrive\\Juniata\\Software Engineering\\StarPower\\samples\\hello_ar_c\\..\\..\\libraries\\glm\" -isystem \"C:\\Users\\micha\\OneDrive\\Juniata\\Software Engineering\\StarPower\\samples\\hello_ar_c\\..\\..\\libraries\\include\"  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -std=c++11 -Wall -O0 -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "C:/Users/micha/OneDrive/Juniata/Software Engineering/StarPower/samples/hello_ar_c/app/src/main/cpp/util.cc",
+					"workingDirectory" : "C:/Users/micha/OneDrive/Juniata/Software Engineering/StarPower/samples/hello_ar_c/app/.cxx/cmake/debug/arm64-v8a"
+				}
+			],
+			"output" : "C:/Users/micha/OneDrive/Juniata/Software Engineering/StarPower/samples/hello_ar_c/app/build/intermediates/cmake/debug/obj/arm64-v8a/libhello_ar_native.so",
+			"toolchain" : "1418879165"
+		}
+	},
+	"toolchains" : 
+	{
+		"1418879165" : 
+		{
+			"cCompilerExecutable" : "C:/Users/micha/AppData/Local/Android/Sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/windows-x86_64/bin/clang.exe",
+			"cppCompilerExecutable" : "C:/Users/micha/AppData/Local/Android/Sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/windows-x86_64/bin/clang++.exe"
+		}
+	}
+}
