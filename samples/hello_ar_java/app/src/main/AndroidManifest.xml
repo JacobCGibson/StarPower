@@ -22,7 +22,13 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="false"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".SettingsMenuActivity"></activity>
+        <activity android:name=".SettingsMenuActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".OwnedMenuActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
