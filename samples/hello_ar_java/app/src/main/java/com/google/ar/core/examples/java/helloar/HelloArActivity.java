@@ -387,7 +387,7 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
         if (currMode == Mode.SCANNING) {
           currMode = Mode.SHOOTING;
         }
-        else currMode = Mode.SHOOTING;
+        else currMode = Mode.SCANNING;
         break;
     }
   }
