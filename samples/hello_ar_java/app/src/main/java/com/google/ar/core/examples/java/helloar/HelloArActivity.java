@@ -381,7 +381,8 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
   public void onClick(View v) {
     switch (v.getId()) {
       case R.id.fireButton:
-        //handleTap();
+        Toast.makeText(HelloArActivity.this,
+                "pew pew pew", Toast.LENGTH_LONG).show();
         break;
       case R.id.switchButton:
         if (currMode == Mode.SCANNING) {
