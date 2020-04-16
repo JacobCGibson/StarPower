@@ -133,6 +133,9 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
     fire = (Button) findViewById(R.id.fireButton);
     switchMode = (Button) findViewById(R.id.switchButton);
 
+    fire.setOnClickListener(this);
+    switchMode.setOnClickListener(this);
+
     // Set up renderer.
     surfaceView.setPreserveEGLContextOnPause(true);
     surfaceView.setEGLContextClientVersion(2);
@@ -382,13 +385,17 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
     switch (v.getId()) {
       case R.id.fireButton:
         Toast.makeText(HelloArActivity.this,
-                "pew pew pew", Toast.LENGTH_LONG).show();
+                "pew pew pew", 1500).show();
         break;
       case R.id.switchButton:
         if (currMode == Mode.SCANNING) {
           currMode = Mode.SHOOTING;
+          switchMode.setText("Shooting");
         }
-        else currMode = Mode.SCANNING;
+        else {
+          currMode = Mode.SCANNING;
+          switchMode.setText("Scanning");
+        }
         break;
     }
   }
