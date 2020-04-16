@@ -16,6 +16,7 @@
 
 package com.google.ar.core.examples.java.helloar;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
@@ -23,6 +24,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MotionEvent;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 import com.google.ar.core.Anchor;
 import com.google.ar.core.ArCoreApk;
@@ -65,7 +68,7 @@ import android.content.res.Configuration;
  * ARCore API. The application will display any detected planes and will allow the user to tap on a
  * plane to place a 3d model of the Android robot.
  */
-public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.Renderer {
+public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.Renderer, View.OnClickListener{
   private static final String TAG = HelloArActivity.class.getSimpleName();
 
   // Rendering. The Renderers are created here, and initialized when the GL surface is created.
@@ -109,6 +112,8 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
   }
   Mode currMode = Mode.SCANNING;
 
+  Button fire, switchMode;
+
   float[] target = {0,0,0,0};
 
   private final ArrayList<ColoredAnchor> anchors = new ArrayList<>();
@@ -123,6 +128,10 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
     // Set up tap listener.
     tapHelper = new TapHelper(/*context=*/ this);
     surfaceView.setOnTouchListener(tapHelper);
+
+    //play buttons
+    fire = (Button) findViewById(R.id.fireButton);
+    switchMode = (Button) findViewById(R.id.switchButton);
 
     // Set up renderer.
     surfaceView.setPreserveEGLContextOnPause(true);
@@ -365,6 +374,21 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
     } catch (Throwable t) {
       // Avoid crashing the application due to unhandled exceptions.
       Log.e(TAG, "Exception on the OpenGL thread", t);
+    }
+  }
+
+  @Override
+  public void onClick(View v) {
+    switch (v.getId()) {
+      case R.id.fireButton:
+        //handleTap();
+        break;
+      case R.id.switchButton:
+        if (currMode == Mode.SCANNING) {
+          currMode = Mode.SHOOTING;
+        }
+        else currMode = Mode.SHOOTING;
+        break;
     }
   }
 
