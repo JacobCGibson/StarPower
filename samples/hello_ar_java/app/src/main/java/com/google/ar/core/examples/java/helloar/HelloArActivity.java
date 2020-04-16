@@ -453,6 +453,7 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
         break;
       case SHOOTING:
         if (tap != null && camera.getTrackingState() == TrackingState.TRACKING) {
+            tap.setLocation(500, 1000);
           for (HitResult hit : frame.hitTest(tap)) {
             // Check if any plane was hit, and if it was hit inside the plane polygon
             Trackable trackable = hit.getTrackable();
