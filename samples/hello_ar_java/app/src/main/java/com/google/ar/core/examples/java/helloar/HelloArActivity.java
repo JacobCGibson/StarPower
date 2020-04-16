@@ -58,6 +58,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
+import android.content.res.Configuration;
 
 /**
  * This is a simple example that shows how to create an augmented reality (AR) application using the
@@ -135,6 +136,18 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
     surfaceView.setWillNotDraw(false);
 
     installRequested = false;
+  }
+
+  @Override
+  public void onConfigurationChanged(Configuration newConfig) {
+    super.onConfigurationChanged(newConfig);
+
+    // Checks the orientation of the screen
+    if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+      setContentView(R.layout.activity_main);
+    } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
+      setContentView(R.layout.activity_main);
+    }
   }
 
   @Override

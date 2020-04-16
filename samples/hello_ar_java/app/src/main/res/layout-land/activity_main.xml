@@ -29,12 +29,16 @@
 
   <ImageView
       android:id="@+id/imageView3"
-      android:layout_width="264dp"
-      android:layout_height="211dp"
+      android:layout_width="292dp"
+      android:layout_height="233dp"
+      android:layout_alignParentStart="true"
+      android:layout_alignParentTop="true"
       android:layout_alignParentEnd="true"
       android:layout_alignParentBottom="true"
-      android:layout_marginEnd="-30dp"
-      android:layout_marginBottom="-67dp"
+      android:layout_marginStart="446dp"
+      android:layout_marginTop="263dp"
+      android:layout_marginEnd="-7dp"
+      android:layout_marginBottom="-85dp"
       android:contentDescription="blaster"
       app:srcCompat="@drawable/gun" />
 
