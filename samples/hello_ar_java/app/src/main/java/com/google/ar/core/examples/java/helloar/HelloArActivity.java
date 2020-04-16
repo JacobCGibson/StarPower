@@ -103,13 +103,10 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
 
   // handles state
   enum Mode {
-    INIT,
-    MENU,
     SCANNING,
-    SHOOTING,
-    SCOREBOARD
+    SHOOTING
   }
-  Mode currMode = Mode.INIT;
+  Mode currMode = Mode.SCANNING;
 
   float[] target = {0,0,0,0};
 
@@ -350,6 +347,8 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
         virtualObjectShadow.draw(viewmtx, projmtx, colorCorrectionRgba, coloredAnchor.color);
       }
 
+
+
     } catch (Throwable t) {
       // Avoid crashing the application due to unhandled exceptions.
       Log.e(TAG, "Exception on the OpenGL thread", t);
@@ -361,7 +360,7 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
     MotionEvent tap = tapHelper.poll();
     switch (currMode)
     {
-      case INIT:
+      case SCANNING:
 
         if (tap != null && camera.getTrackingState() == TrackingState.TRACKING) {
           for (HitResult hit : frame.hitTest(tap)) {
@@ -400,13 +399,13 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
               // in the correct position relative both to the world and to the plane.
               anchors.add(new ColoredAnchor(hit.createAnchor(), objColor));
 
-              currMode = Mode.MENU;
+              currMode = Mode.SHOOTING;
               break;
             }
           }
         }
         break;
-      case MENU:
+      case SHOOTING:
         if (tap != null && camera.getTrackingState() == TrackingState.TRACKING) {
           for (HitResult hit : frame.hitTest(tap)) {
             // Check if any plane was hit, and if it was hit inside the plane polygon
@@ -429,20 +428,10 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
                 if (Math.abs(hitSpot[ii]-target[ii]) >= hitRange) isHit = false;
               }
               //TODO: temporary hit detection
-              if (isHit) currMode = Mode.INIT;
+              if (isHit) currMode = Mode.SCANNING;
             }
           }
         }
-              //TODO: uncomment currMode = Mode.MENU;
-        break;
-      case SCANNING:
-
-        break;
-      case SHOOTING:
-
-        break;
-      case SCOREBOARD:
-
         break;
     }
   }
