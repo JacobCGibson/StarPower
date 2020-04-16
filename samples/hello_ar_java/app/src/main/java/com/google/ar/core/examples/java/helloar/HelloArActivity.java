@@ -387,7 +387,6 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
                     && ((Point) trackable).getOrientationMode()
                     == OrientationMode.ESTIMATED_SURFACE_NORMAL)) {
               // Hits are sorted by depth. Consider only closest hit on a plane or oriented point.
-              target = hit.getHitPose().getTranslation();
               // Cap the number of objects created. This avoids overloading both the
               // rendering system and ARCore.
               if (anchors.size() >= 20) {
@@ -412,6 +411,8 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
               // in the correct position relative both to the world and to the plane.
               anchors.add(new ColoredAnchor(hit.createAnchor(), objColor));
 
+              // store target location
+              target = hit.getHitPose().getTranslation();
               currMode = Mode.SHOOTING;
               break;
             }
@@ -432,6 +433,7 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
                     == OrientationMode.ESTIMATED_SURFACE_NORMAL)) {
               // Hits are sorted by depth. Consider only closest hit on a plane or oriented point.
 
+              //TODO: temporary hit detection
               float[] hitSpot = hit.getHitPose().getTranslation();
               boolean isHit = true;
               float hitRange = 0.2f;
@@ -440,7 +442,6 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
                 // if user missed
                 if (Math.abs(hitSpot[ii]-target[ii]) >= hitRange) isHit = false;
               }
-              //TODO: temporary hit detection
               if (isHit) currMode = Mode.SCANNING;
             }
           }
