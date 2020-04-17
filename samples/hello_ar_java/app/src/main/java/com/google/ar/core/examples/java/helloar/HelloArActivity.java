@@ -16,16 +16,19 @@
 
 package com.google.ar.core.examples.java.helloar;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.AtomicFile;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.google.ar.core.Anchor;
 import com.google.ar.core.ArCoreApk;
@@ -94,6 +97,9 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
 
   private static final String SEARCHING_PLANE_MESSAGE = "Searching for surfaces...";
 
+  // score
+  Score m_Score = new Score();
+
   // Anchors created from taps used for object placing with a given color.
   private static class ColoredAnchor {
     public final Anchor anchor;
@@ -112,9 +118,8 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
   }
   Mode currMode = Mode.SCANNING;
 
-  Button fire, switchMode;
-
-  float[] target = {0,0,0,0};
+  Button switchMode;
+  TextView points;
 
   private final ArrayList<ColoredAnchor> anchors = new ArrayList<>();
 
@@ -129,12 +134,12 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
     tapHelper = new TapHelper(/*context=*/ this);
     surfaceView.setOnTouchListener(tapHelper);
 
-    //play buttons
-    fire = (Button) findViewById(R.id.fireButton);
+    //play button
     switchMode = (Button) findViewById(R.id.switchButton);
-
-    fire.setOnClickListener(this);
     switchMode.setOnClickListener(this);
+
+    // points label
+    points = (TextView) findViewById(R.id.pointsView);
 
     // Set up renderer.
     surfaceView.setPreserveEGLContextOnPause(true);
@@ -221,6 +226,9 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
 
     surfaceView.onResume();
     displayRotationHelper.onResume();
+
+    Toast.makeText(HelloArActivity.this,
+            "place some targets!", Toast.LENGTH_LONG).show();
   }
 
   @Override
@@ -383,18 +391,18 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
   @Override
   public void onClick(View v) {
     switch (v.getId()) {
-      case R.id.fireButton:
-        Toast.makeText(HelloArActivity.this,
-                "pew pew pew", 1500).show();
-        break;
       case R.id.switchButton:
-        if (currMode == Mode.SCANNING) {
+        // if we're scanning and there's at least one target
+        if (currMode == Mode.SCANNING
+        && anchors.size() > 0) {
           currMode = Mode.SHOOTING;
           switchMode.setText("Shooting");
-        }
-        else {
-          currMode = Mode.SCANNING;
-          switchMode.setText("Scanning");
+          switchMode.setEnabled(false);
+
+          points.setText("0");
+
+          Toast.makeText(HelloArActivity.this,
+                  "place some targets!", Toast.LENGTH_LONG).show();
         }
         break;
     }
@@ -442,10 +450,6 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
               // space. This anchor is created on the Plane to place the 3D model
               // in the correct position relative both to the world and to the plane.
               anchors.add(new ColoredAnchor(hit.createAnchor(), objColor));
-
-              // store target location
-              target = hit.getHitPose().getTranslation();
-              currMode = Mode.SHOOTING;
               break;
             }
           }
@@ -453,29 +457,35 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
         break;
       case SHOOTING:
         if (tap != null && camera.getTrackingState() == TrackingState.TRACKING) {
-            tap.setLocation(500, 1000);
-          for (HitResult hit : frame.hitTest(tap)) {
-            // Check if any plane was hit, and if it was hit inside the plane polygon
-            Trackable trackable = hit.getTrackable();
-            // Creates an anchor if a plane or an oriented point was hit.
-            if ((trackable instanceof Plane
-                    && ((Plane) trackable).isPoseInPolygon(hit.getHitPose())
-                    && (PlaneRenderer.calculateDistanceToPlane(hit.getHitPose(), camera.getPose()) > 0))
-                    || (trackable instanceof Point
-                    && ((Point) trackable).getOrientationMode()
-                    == OrientationMode.ESTIMATED_SURFACE_NORMAL)) {
-              // Hits are sorted by depth. Consider only closest hit on a plane or oriented point.
+          // set tap to middle of screen
+          tap.setLocation(500, 1000);
 
-              //TODO: temporary hit detection
-              float[] hitSpot = hit.getHitPose().getTranslation();
-              boolean isHit = true;
-              float hitRange = 0.2f;
-              for (int ii=0; ii<3; ii++)
+          for (HitResult hit : frame.hitTest(tap)) {
+            // hit detection
+            float hitRange = 0.2f;    // radius of the target - size of hitbox
+
+            float[] hitSpot = hit.getHitPose().getTranslation();
+            boolean isHit = false;
+            // check all targets
+            for (ColoredAnchor ca : anchors)
+            {
+              float[] target = ca.anchor.getPose().getTranslation();
+              // if user hit a target
+              if (Math.abs(hitSpot[0]-target[0]) < hitRange
+                && Math.abs(hitSpot[1]-target[1]) < hitRange
+                && Math.abs(hitSpot[2]-target[2]) < hitRange)
               {
-                // if user missed
-                if (Math.abs(hitSpot[ii]-target[ii]) >= hitRange) isHit = false;
+                isHit = true;
               }
-              if (isHit) currMode = Mode.SCANNING;
+              if (isHit) break;  // we have a hit so we don't need to check other targets
+            }
+            // if target is hit add points and update display
+            if (isHit)
+            {
+              m_Score.addPoints(100);
+              points.setText(String.valueOf(m_Score.getPoints()));
+              points.invalidate();  //need to force android to update points before continuing
+              points.requestLayout();
             }
           }
         }

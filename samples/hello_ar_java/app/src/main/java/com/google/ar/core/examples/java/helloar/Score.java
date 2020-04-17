@@ -2,6 +2,9 @@ package com.google.ar.core.examples.java.helloar;
 
 public class Score {
 
+    private String initials = "";
+    private int points = 0;
+
     //constructor
     public Score(){
         initials = "";
@@ -29,8 +32,5 @@ public class Score {
         //return points instance variable
         return points;
     }
-
-    private String initials;
-    private int points;
 
 }
