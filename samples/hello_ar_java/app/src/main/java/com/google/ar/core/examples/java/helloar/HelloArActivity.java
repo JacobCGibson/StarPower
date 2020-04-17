@@ -22,6 +22,7 @@ import android.graphics.Color;
 import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.util.AtomicFile;
 import android.util.Log;
@@ -66,12 +67,14 @@ import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 import android.content.res.Configuration;
 
+import org.w3c.dom.Text;
+
 /**
  * This is a simple example that shows how to create an augmented reality (AR) application using the
  * ARCore API. The application will display any detected planes and will allow the user to tap on a
  * plane to place a 3d model of the Android robot.
  */
-public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.Renderer, View.OnClickListener{
+public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.Renderer, View.OnClickListener {
   private static final String TAG = HelloArActivity.class.getSimpleName();
 
   // Rendering. The Renderers are created here, and initialized when the GL surface is created.
@@ -93,7 +96,7 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
 
   // Temporary matrix allocated here to reduce number of allocations for each frame.
   private final float[] anchorMatrix = new float[16];
-  private static final float[] DEFAULT_COLOR = new float[] {0f, 0f, 0f, 0f};
+  private static final float[] DEFAULT_COLOR = new float[]{0f, 0f, 0f, 0f};
 
   private static final String SEARCHING_PLANE_MESSAGE = "Searching for surfaces...";
 
@@ -116,10 +119,15 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
     SCANNING,
     SHOOTING
   }
+
   Mode currMode = Mode.SCANNING;
 
   Button switchMode;
   TextView points;
+  TextView timer;
+  CountDownTimer countDownTimer;
+  long timeLeftinMilliseconds = 600000;
+  boolean timerRunning;
 
   private final ArrayList<ColoredAnchor> anchors = new ArrayList<>();
 
@@ -140,6 +148,7 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
 
     // points label
     points = (TextView) findViewById(R.id.pointsView);
+    timer = (TextView) findViewById(R.id.timerView);
 
     // Set up renderer.
     surfaceView.setPreserveEGLContextOnPause(true);
@@ -159,7 +168,7 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
     // Checks the orientation of the screen
     if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
       setContentView(R.layout.activity_main);
-    } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
+    } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
       setContentView(R.layout.activity_main);
     }
   }
@@ -191,7 +200,7 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
         session = new Session(/* context= */ this);
 
       } catch (UnavailableArcoreNotInstalledException
-          | UnavailableUserDeclinedInstallationException e) {
+              | UnavailableUserDeclinedInstallationException e) {
         message = "Please install ARCore";
         exception = e;
       } catch (UnavailableApkTooOldException e) {
@@ -248,7 +257,7 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
   public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] results) {
     if (!CameraPermissionHelper.hasCameraPermission(this)) {
       Toast.makeText(this, "Camera permission is needed to run this application", Toast.LENGTH_LONG)
-          .show();
+              .show();
       if (!CameraPermissionHelper.shouldShowRequestPermissionRationale(this)) {
         // Permission denied with checking "Do not ask again".
         CameraPermissionHelper.launchPermissionSettings(this);
@@ -278,7 +287,7 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
       virtualObject.setMaterialProperties(0.0f, 2.0f, 0.5f, 6.0f);
 
       virtualObjectShadow.createOnGlThread(
-          /*context=*/ this, "models/andy_shadow.obj", "models/andy_shadow.png");
+              /*context=*/ this, "models/andy_shadow.obj", "models/andy_shadow.png");
       virtualObjectShadow.setBlendMode(BlendMode.Shadow);
       virtualObjectShadow.setMaterialProperties(1.0f, 0.0f, 0.0f, 1.0f);
 
@@ -326,7 +335,7 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
       // If not tracking, don't draw 3D objects, show tracking failure reason instead.
       if (camera.getTrackingState() == TrackingState.PAUSED) {
         messageSnackbarHelper.showMessage(
-            this, TrackingStateHelper.getTrackingFailureReasonString(camera));
+                this, TrackingStateHelper.getTrackingFailureReasonString(camera));
         return;
       }
 
@@ -361,7 +370,7 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
 
       // Visualize planes.
       planeRenderer.drawPlanes(
-          session.getAllTrackables(Plane.class), camera.getDisplayOrientedPose(), projmtx);
+              session.getAllTrackables(Plane.class), camera.getDisplayOrientedPose(), projmtx);
 
       // Visualize anchors created by touch.
       float scaleFactor = 0.005f;
@@ -381,7 +390,6 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
       }
 
 
-
     } catch (Throwable t) {
       // Avoid crashing the application due to unhandled exceptions.
       Log.e(TAG, "Exception on the OpenGL thread", t);
@@ -394,12 +402,13 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
       case R.id.switchButton:
         // if we're scanning and there's at least one target
         if (currMode == Mode.SCANNING
-        && anchors.size() > 0) {
+                && anchors.size() > 0) {
           currMode = Mode.SHOOTING;
           switchMode.setText("Shooting");
           switchMode.setEnabled(false);
 
           points.setText("0");
+          timer.setText("0");
 
           Toast.makeText(HelloArActivity.this,
                   "place some targets!", Toast.LENGTH_LONG).show();
@@ -411,8 +420,7 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
   // Handle only one tap per frame, as taps are usually low frequency compared to frame rate.
   private void handleTap(Frame frame, Camera camera) {
     MotionEvent tap = tapHelper.poll();
-    switch (currMode)
-    {
+    switch (currMode) {
       case SCANNING:
 
         if (tap != null && camera.getTrackingState() == TrackingState.TRACKING) {
@@ -439,9 +447,9 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
               // for AR_TRACKABLE_PLANE, it's green color.
               float[] objColor;
               if (trackable instanceof Point) {
-                objColor = new float[] {66.0f, 133.0f, 244.0f, 255.0f};
+                objColor = new float[]{66.0f, 133.0f, 244.0f, 255.0f};
               } else if (trackable instanceof Plane) {
-                objColor = new float[] {139.0f, 195.0f, 74.0f, 255.0f};
+                objColor = new float[]{139.0f, 195.0f, 74.0f, 255.0f};
               } else {
                 objColor = DEFAULT_COLOR;
               }
@@ -456,6 +464,7 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
         }
         break;
       case SHOOTING:
+        startTimer();
         if (tap != null && camera.getTrackingState() == TrackingState.TRACKING) {
           // set tap to middle of screen
           tap.setLocation(500, 1000);
@@ -467,21 +476,18 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
             float[] hitSpot = hit.getHitPose().getTranslation();
             boolean isHit = false;
             // check all targets
-            for (ColoredAnchor ca : anchors)
-            {
+            for (ColoredAnchor ca : anchors) {
               float[] target = ca.anchor.getPose().getTranslation();
               // if user hit a target
-              if (Math.abs(hitSpot[0]-target[0]) < hitRange
-                && Math.abs(hitSpot[1]-target[1]) < hitRange
-                && Math.abs(hitSpot[2]-target[2]) < hitRange)
-              {
+              if (Math.abs(hitSpot[0] - target[0]) < hitRange
+                      && Math.abs(hitSpot[1] - target[1]) < hitRange
+                      && Math.abs(hitSpot[2] - target[2]) < hitRange) {
                 isHit = true;
               }
               if (isHit) break;  // we have a hit so we don't need to check other targets
             }
             // if target is hit add points and update display
-            if (isHit)
-            {
+            if (isHit) {
               m_Score.addPoints(100);
               points.setText(String.valueOf(m_Score.getPoints()));
               points.invalidate();  //need to force android to update points before continuing
@@ -493,7 +499,9 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
     }
   }
 
-  /** Checks if we detected at least one plane. */
+  /**
+   * Checks if we detected at least one plane.
+   */
   private boolean hasTrackingPlane() {
     for (Plane plane : session.getAllTrackables(Plane.class)) {
       if (plane.getTrackingState() == TrackingState.TRACKING) {
@@ -502,4 +510,39 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
     }
     return false;
   }
-}
+
+  public void startTimer() {
+    countDownTimer = new CountDownTimer(timeLeftinMilliseconds, 1000) {
+      @Override
+      public void onTick(long l) {
+        timeLeftinMilliseconds = l;
+        updateTimer();
+      }
+
+      @Override
+      public void onFinish() {
+        timer.setText("STOP");
+      }
+    }.start();
+
+    timerRunning = true;
+  }
+
+  public void stopTimer(){
+    countDownTimer.cancel();
+    timerRunning = false;
+  }
+
+  public void updateTimer(){
+      int minutes = (int) timeLeftinMilliseconds / 600000;
+      int seconds = (int) timeLeftinMilliseconds % 600000 / 1000;
+      String timeLeftText;
+      timeLeftText = "" + minutes;
+      timeLeftText += ":";
+      if (seconds < 10) timeLeftText += "0";
+      timeLeftText += seconds;
+      timer.setText(timeLeftText);
+    }
+  }
+
+
