@@ -411,8 +411,10 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
           timer.setText("0");
 
           Toast.makeText(HelloArActivity.this,
-                  "place some targets!", Toast.LENGTH_LONG).show();
+                  "Shoot em!", Toast.LENGTH_LONG).show();
         }
+        else Toast.makeText(HelloArActivity.this,
+                "Please place at least one target", Toast.LENGTH_LONG).show();
         break;
     }
   }
