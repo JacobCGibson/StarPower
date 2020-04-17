@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".MainMenuActivity">
 
+    <ImageView
+        android:id="@+id/btn_capture_photo"
+        android:layout_width="367dp"
+        android:layout_height="235dp"
+        android:src="@drawable/logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="171dp" />
+
     <Button
         android:id="@+id/customizeButton"
         android:layout_width="wrap_content"
@@ -35,6 +45,7 @@
         android:layout_height="wrap_content"
         android:text="Play"
         android:textAllCaps="true"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
