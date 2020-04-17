@@ -37,6 +37,17 @@
       android:contentDescription="blaster"
       app:srcCompat="@drawable/gun" />
 
+  <ImageView
+      android:id="@+id/imageView4"
+      android:layout_width="114dp"
+      android:layout_height="75dp"
+      android:layout_alignParentEnd="true"
+      android:layout_alignParentBottom="true"
+      android:layout_marginEnd="148dp"
+      android:layout_marginBottom="330dp"
+      android:contentDescription="blaster"
+      app:srcCompat="@drawable/red_reticle" />
+
   <Button
       android:id="@+id/switchButton"
       android:layout_width="wrap_content"
@@ -60,4 +71,13 @@
       android:width="200dp"
       android:text="Points" />
 
+  <TextView
+      android:id="@+id/timerView"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginLeft="275dp"
+      android:textSize="50sp"
+      tools:text="10:00" />
+
 </RelativeLayout>
+
