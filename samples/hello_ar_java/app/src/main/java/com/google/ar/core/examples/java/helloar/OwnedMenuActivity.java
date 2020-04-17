@@ -31,8 +31,8 @@ public class OwnedMenuActivity extends Activity implements View.OnClickListener{
                 startActivity(menuIntent);
                 break;
             case R.id.buttonShop:
-                //Intent shopIntent = new Intent(getApplicationContext(), OwnedMenuActivity.class);
-                //startActivity(shopIntent);
+                Intent shopIntent = new Intent(getApplicationContext(), OwnedMenuActivity.class);
+                startActivity(shopIntent);
                 break;
         }
     }
