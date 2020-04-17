@@ -10,11 +10,12 @@
         android:id="@+id/btn_capture_photo"
         android:layout_width="367dp"
         android:layout_height="235dp"
+        android:layout_marginTop="164dp"
         android:src="@drawable/logo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.636"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="171dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/customizeButton"
