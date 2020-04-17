@@ -58,26 +58,31 @@
       android:layout_marginStart="10dp"
       android:text="Scanning" />
 
-  <TextView
-      android:id="@+id/pointsView"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_alignParentTop="true"
-      android:layout_alignParentRight="true"
-      android:layout_marginRight="40dp"
-      android:layout_marginTop="10dp"
-      android:textSize="30sp"
-      android:textAlignment="textStart"
-      android:width="200dp"
-      android:text="Points" />
+    <TextView
+        android:id="@+id/pointsView"
+        android:layout_width="152dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="145dp"
+        android:width="200dp"
+        android:text="Points"
+        android:textAlignment="textStart"
+        android:textSize="30sp" />
 
-  <TextView
-      android:id="@+id/timerView"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginLeft="275dp"
-      android:textSize="50sp"
-      tools:text="10:00" />
+    <TextView
+        android:id="@+id/timeView"
+        android:layout_width="152dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="-1dp"
+        android:width="150dp"
+        android:text="Time"
+        android:textAlignment="textStart"
+        android:textSize="30sp" />
 
 </RelativeLayout>
 

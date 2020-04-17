@@ -125,9 +125,8 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
   Button switchMode;
   TextView points;
   TextView timer;
-  CountDownTimer countDownTimer;
-  long timeLeftinMilliseconds = 600000;
-  boolean timerRunning;
+
+  ShootingGallery shooter = new ShootingGallery();
 
   private final ArrayList<ColoredAnchor> anchors = new ArrayList<>();
 
@@ -148,7 +147,7 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
 
     // points label
     points = (TextView) findViewById(R.id.pointsView);
-    timer = (TextView) findViewById(R.id.timerView);
+    timer = (TextView) findViewById(R.id.timeView);
 
     // Set up renderer.
     surfaceView.setPreserveEGLContextOnPause(true);
@@ -389,6 +388,8 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
         virtualObjectShadow.draw(viewmtx, projmtx, colorCorrectionRgba, coloredAnchor.color);
       }
 
+      // if shooting do timer
+      if (currMode == Mode.SHOOTING) UpdateTimer();
 
     } catch (Throwable t) {
       // Avoid crashing the application due to unhandled exceptions.
@@ -408,7 +409,9 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
           switchMode.setEnabled(false);
 
           points.setText("0");
-          timer.setText("0");
+
+          shooter.startTimer();
+          timer.setText(shooter.getTimeLeftText());
 
           Toast.makeText(HelloArActivity.this,
                   "Shoot em!", Toast.LENGTH_LONG).show();
@@ -417,6 +420,14 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
                 "Please place at least one target", Toast.LENGTH_LONG).show();
         break;
     }
+  }
+
+  private void UpdateTimer()
+  {
+    shooter.tickTimer();
+    timer.setText(shooter.getTimeLeftText());
+    timer.invalidate();
+    timer.requestLayout();
   }
 
   // Handle only one tap per frame, as taps are usually low frequency compared to frame rate.
@@ -466,7 +477,6 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
         }
         break;
       case SHOOTING:
-        startTimer();
         if (tap != null && camera.getTrackingState() == TrackingState.TRACKING) {
           // set tap to middle of screen
           tap.setLocation(500, 1000);
@@ -513,38 +523,6 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
     return false;
   }
 
-  public void startTimer() {
-    countDownTimer = new CountDownTimer(timeLeftinMilliseconds, 1000) {
-      @Override
-      public void onTick(long l) {
-        timeLeftinMilliseconds = l;
-        updateTimer();
-      }
-
-      @Override
-      public void onFinish() {
-        timer.setText("STOP");
-      }
-    }.start();
-
-    timerRunning = true;
-  }
-
-  public void stopTimer(){
-    countDownTimer.cancel();
-    timerRunning = false;
-  }
-
-  public void updateTimer(){
-      int minutes = (int) timeLeftinMilliseconds / 600000;
-      int seconds = (int) timeLeftinMilliseconds % 600000 / 1000;
-      String timeLeftText;
-      timeLeftText = "" + minutes;
-      timeLeftText += ":";
-      if (seconds < 10) timeLeftText += "0";
-      timeLeftText += seconds;
-      timer.setText(timeLeftText);
-    }
-  }
+}
 
 
