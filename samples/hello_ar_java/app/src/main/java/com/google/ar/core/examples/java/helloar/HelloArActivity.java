@@ -19,6 +19,7 @@ package com.google.ar.core.examples.java.helloar;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
@@ -101,7 +102,7 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
   private static final String SEARCHING_PLANE_MESSAGE = "Searching for surfaces...";
 
   // score
-  Score m_Score = new Score();
+  private Score m_Score = new Score();
 
   // Anchors created from taps used for object placing with a given color.
   private static class ColoredAnchor {
@@ -120,13 +121,15 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
     SHOOTING
   }
 
-  Mode currMode = Mode.SCANNING;
+  private Mode currMode = Mode.SCANNING;
 
-  Button switchMode;
-  TextView points;
-  TextView timer;
+  private Button switchMode;
+  private TextView points;
+  private TextView timer;
 
-  ShootingGallery shooter = new ShootingGallery();
+  private ShootingGallery shooter = new ShootingGallery();
+
+  private MediaPlayer laserSound;
 
   private final ArrayList<ColoredAnchor> anchors = new ArrayList<>();
 
@@ -148,6 +151,9 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
     // points label
     points = (TextView) findViewById(R.id.pointsView);
     timer = (TextView) findViewById(R.id.timeView);
+
+    // sounds
+    laserSound = MediaPlayer.create(this, R.raw.laser);
 
     // Set up renderer.
     surfaceView.setPreserveEGLContextOnPause(true);
@@ -435,7 +441,6 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
     MotionEvent tap = tapHelper.poll();
     switch (currMode) {
       case SCANNING:
-
         if (tap != null && camera.getTrackingState() == TrackingState.TRACKING) {
           for (HitResult hit : frame.hitTest(tap)) {
             // Check if any plane was hit, and if it was hit inside the plane polygon
@@ -477,7 +482,11 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
         }
         break;
       case SHOOTING:
-        if (tap != null && camera.getTrackingState() == TrackingState.TRACKING) {
+        if (tap != null && camera.getTrackingState() == TrackingState.TRACKING
+            && !laserSound.isPlaying()) {
+          // play sound
+          laserSound.start();
+
           // set tap to middle of screen
           tap.setLocation(500, 1000);
 
