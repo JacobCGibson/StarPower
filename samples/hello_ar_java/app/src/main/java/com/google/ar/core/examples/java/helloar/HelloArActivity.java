@@ -91,13 +91,12 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
 
   private final BackgroundRenderer backgroundRenderer = new BackgroundRenderer();
   private final ObjectRenderer virtualObject = new ObjectRenderer();
-  private final ObjectRenderer virtualObjectShadow = new ObjectRenderer();
   private final PlaneRenderer planeRenderer = new PlaneRenderer();
   private final PointCloudRenderer pointCloudRenderer = new PointCloudRenderer();
 
   // Temporary matrix allocated here to reduce number of allocations for each frame.
   private final float[] anchorMatrix = new float[16];
-  private static final float[] DEFAULT_COLOR = new float[]{0f, 0f, 0f, 0f};
+  private static final float[] DEFAULT_COLOR = new float[]{225f, 0f, 0f, 255f};
 
   private static final String SEARCHING_PLANE_MESSAGE = "Searching for surfaces...";
 
@@ -290,12 +289,7 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
       pointCloudRenderer.createOnGlThread(/*context=*/ this);
 
       virtualObject.createOnGlThread(/*context=*/ this, "models/target.obj", "models/andy.png");
-      virtualObject.setMaterialProperties(0.0f, 2.0f, 0.5f, 6.0f);
-
-      virtualObjectShadow.createOnGlThread(
-              /*context=*/ this, "models/andy_shadow.obj", "models/andy_shadow.png");
-      virtualObjectShadow.setBlendMode(BlendMode.Shadow);
-      virtualObjectShadow.setMaterialProperties(1.0f, 0.0f, 0.0f, 1.0f);
+      virtualObject.setMaterialProperties(2.0f, 1.0f, 0.5f, 1.0f);
 
     } catch (IOException e) {
       Log.e(TAG, "Failed to read an asset file", e);
@@ -392,9 +386,7 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
 
           // Update and draw the model and its shadow.
           virtualObject.updateModelMatrix(anchorMatrix, scaleFactor);
-          virtualObjectShadow.updateModelMatrix(anchorMatrix, scaleFactor);
           virtualObject.draw(viewmtx, projmtx, colorCorrectionRgba, coloredAnchor.color);
-          virtualObjectShadow.draw(viewmtx, projmtx, colorCorrectionRgba, coloredAnchor.color);
         }
       }
 
@@ -411,9 +403,9 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
   public void onClick(View v) {
     switch (v.getId()) {
       case R.id.switchButton:
-        // if we're scanning and there's at least one target
+        // if we're scanning and there's at least two targets
         if (currMode == Mode.SCANNING
-                && anchors.size() > 0) {
+                && anchors.size() >= 2) {
           currMode = Mode.SHOOTING;
           switchMode.setText("Shooting");
           switchMode.setEnabled(false);
@@ -427,7 +419,7 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
                   "Shoot em!", Toast.LENGTH_LONG).show();
         }
         else Toast.makeText(HelloArActivity.this,
-                "Please place at least one target", Toast.LENGTH_LONG).show();
+                "Please place at least two targets", Toast.LENGTH_LONG).show();
         break;
     }
   }
@@ -465,17 +457,9 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
                 isVisible.remove(0);
               }
 
-              // Assign a color to the object for rendering based on the trackable type
-              // this anchor attached to. For AR_TRACKABLE_POINT, it's blue color, and
-              // for AR_TRACKABLE_PLANE, it's green color.
+              // assign red color to the targets
               float[] objColor;
-              if (trackable instanceof Point) {
-                objColor = new float[]{66.0f, 133.0f, 244.0f, 255.0f};
-              } else if (trackable instanceof Plane) {
-                objColor = new float[]{139.0f, 195.0f, 74.0f, 255.0f};
-              } else {
-                objColor = DEFAULT_COLOR;
-              }
+              objColor = DEFAULT_COLOR;
 
               // Adding an Anchor tells ARCore that it should track this position in
               // space. This anchor is created on the Plane to place the 3D model
