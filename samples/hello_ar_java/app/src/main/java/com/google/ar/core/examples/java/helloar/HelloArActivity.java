@@ -132,6 +132,7 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
   private MediaPlayer laserSound;
 
   private final ArrayList<ColoredAnchor> anchors = new ArrayList<>();
+  private ArrayList<java.lang.Boolean> isVisible = new ArrayList<>();
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -380,18 +381,21 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
       // Visualize anchors created by touch.
       float scaleFactor = 0.005f;
       for (ColoredAnchor coloredAnchor : anchors) {
-        if (coloredAnchor.anchor.getTrackingState() != TrackingState.TRACKING) {
-          continue;
-        }
-        // Get the current pose of an Anchor in world space. The Anchor pose is updated
-        // during calls to session.update() as ARCore refines its estimate of the world.
-        coloredAnchor.anchor.getPose().toMatrix(anchorMatrix, 0);
+        if (isVisible.get(anchors.indexOf(coloredAnchor)))
+        {
+          if (coloredAnchor.anchor.getTrackingState() != TrackingState.TRACKING) {
+            continue;
+          }
+          // Get the current pose of an Anchor in world space. The Anchor pose is updated
+          // during calls to session.update() as ARCore refines its estimate of the world.
+          coloredAnchor.anchor.getPose().toMatrix(anchorMatrix, 0);
 
-        // Update and draw the model and its shadow.
-        virtualObject.updateModelMatrix(anchorMatrix, scaleFactor);
-        virtualObjectShadow.updateModelMatrix(anchorMatrix, scaleFactor);
-        virtualObject.draw(viewmtx, projmtx, colorCorrectionRgba, coloredAnchor.color);
-        virtualObjectShadow.draw(viewmtx, projmtx, colorCorrectionRgba, coloredAnchor.color);
+          // Update and draw the model and its shadow.
+          virtualObject.updateModelMatrix(anchorMatrix, scaleFactor);
+          virtualObjectShadow.updateModelMatrix(anchorMatrix, scaleFactor);
+          virtualObject.draw(viewmtx, projmtx, colorCorrectionRgba, coloredAnchor.color);
+          virtualObjectShadow.draw(viewmtx, projmtx, colorCorrectionRgba, coloredAnchor.color);
+        }
       }
 
       // if shooting do timer
@@ -458,6 +462,7 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
               if (anchors.size() >= 20) {
                 anchors.get(0).anchor.detach();
                 anchors.remove(0);
+                isVisible.remove(0);
               }
 
               // Assign a color to the object for rendering based on the trackable type
@@ -476,6 +481,7 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
               // space. This anchor is created on the Plane to place the 3D model
               // in the correct position relative both to the world and to the plane.
               anchors.add(new ColoredAnchor(hit.createAnchor(), objColor));
+              isVisible.add(true);
               break;
             }
           }
@@ -498,14 +504,26 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
             boolean isHit = false;
             // check all targets
             for (ColoredAnchor ca : anchors) {
-              float[] target = ca.anchor.getPose().getTranslation();
-              // if user hit a target
-              if (Math.abs(hitSpot[0] - target[0]) < hitRange
-                      && Math.abs(hitSpot[1] - target[1]) < hitRange
-                      && Math.abs(hitSpot[2] - target[2]) < hitRange) {
-                isHit = true;
+              if (isVisible.get(anchors.indexOf(ca)))
+              {
+                float[] target = ca.anchor.getPose().getTranslation();
+                // if user hit a target
+                if (Math.abs(hitSpot[0] - target[0]) < hitRange
+                        && Math.abs(hitSpot[1] - target[1]) < hitRange
+                        && Math.abs(hitSpot[2] - target[2]) < hitRange) {
+                  isHit = true;
+
+                  // also need to set target to invisible
+                  isVisible.set(anchors.indexOf(ca), false);
+                  // if all are invisible we need to show all except one they shot
+                  if (!isVisible.contains(true))
+                  {
+                    for(int ii=0; ii<isVisible.size(); ii++) isVisible.set(ii, true);
+                    isVisible.set(anchors.indexOf(ca), false);
+                  }
+                }
+                if (isHit) break;  // we have a hit so we don't need to check other targets
               }
-              if (isHit) break;  // we have a hit so we don't need to check other targets
             }
             // if target is hit add points and update display
             if (isHit) {
