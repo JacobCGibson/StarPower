@@ -1,10 +1,12 @@
 package com.google.ar.core.examples.java.helloar;
 
+import android.content.Intent;
 import android.os.CountDownTimer;
 
 public class ShootingGallery {
 
-    long timeLeftinMilliseconds = 600000;
+    long timeLeftinMilliseconds;
+    int timerDuration = 5; //in seconds
     String timeLeftText = "10:00";
 
     //constructor
@@ -31,7 +33,7 @@ public class ShootingGallery {
     public String getTimeLeftText() { return timeLeftText; }
 
     public void startTimer() {
-        timeLeftinMilliseconds = 900000;
+        timeLeftinMilliseconds = timerDuration*10000;
         updateTimer();
     }
 
@@ -49,6 +51,9 @@ public class ShootingGallery {
         timeLeftText += ":";
         if (seconds < 10) timeLeftText += "0";
         timeLeftText += seconds;
+
     }
+
+    public long getTimeLeft(){return timeLeftinMilliseconds;}
 
 }
