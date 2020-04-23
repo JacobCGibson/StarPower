@@ -7,7 +7,7 @@ public class ShootingGallery {
 
     long timeLeftinMilliseconds;
     int timerDuration = 5; //in seconds
-    String timeLeftText = "10:00";
+    String timeLeftText = "";
 
     //constructor
     public ShootingGallery(){
@@ -31,6 +31,8 @@ public class ShootingGallery {
     }
 
     public String getTimeLeftText() { return timeLeftText; }
+    
+    public int getTimerDuration() {return timerDuration;}
 
     public void startTimer() {
         timeLeftinMilliseconds = timerDuration*10000;
