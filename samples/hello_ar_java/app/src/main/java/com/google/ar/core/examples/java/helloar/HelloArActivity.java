@@ -434,7 +434,7 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
       Intent i = new Intent(this, ScoreboardActivity.class);
       Bundle bundle = new Bundle();
       bundle.putString("SCORE", String.valueOf(m_Score.getPoints()));
-      bundle.putString("TIME", String.valueOf(shooter.getTimerDuration()));
+      bundle.putString("TIME", String.valueOf(timer.getTimerDuration()));
       i.putExtras(bundle);
       startActivity(i);
     }
