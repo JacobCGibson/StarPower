@@ -23,7 +23,6 @@ import android.media.MediaPlayer;
 import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.util.AtomicFile;
 import android.util.Log;
@@ -124,10 +123,12 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
 
   private Button switchMode;
   private TextView points;
-  private TextView timer;
+  private TextView timerText;
+
 
   private ShootingGallery shooter = new ShootingGallery();
   private Settings m_settings = new Settings();
+  private Timer timer = new Timer();
 
   private MediaPlayer laserSound;
   private final static int MAX_VOLUME = 100;
@@ -154,7 +155,7 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
 
     // points label
     points = (TextView) findViewById(R.id.pointsView);
-    timer = (TextView) findViewById(R.id.timeView);
+    timerText = (TextView) findViewById(R.id.timeView);
 
     // sounds
     laserSound = MediaPlayer.create(this, R.raw.laser);
@@ -249,7 +250,7 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
     displayRotationHelper.onResume();
 
     Toast.makeText(HelloArActivity.this,
-            "place some targets!", Toast.LENGTH_LONG).show();
+            R.string.place_toast, Toast.LENGTH_LONG).show();
   }
 
   @Override
@@ -268,7 +269,7 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
   @Override
   public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] results) {
     if (!CameraPermissionHelper.hasCameraPermission(this)) {
-      Toast.makeText(this, "Camera permission is needed to run this application", Toast.LENGTH_LONG)
+      Toast.makeText(this, R.string.camera_toast, Toast.LENGTH_LONG)
               .show();
       if (!CameraPermissionHelper.shouldShowRequestPermissionRationale(this)) {
         // Permission denied with checking "Do not ask again".
@@ -414,36 +415,40 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
         if (currMode == Mode.SCANNING
                 && anchors.size() >= 2) {
           currMode = Mode.SHOOTING;
-          switchMode.setText("Shooting");
+          switchMode.setText(R.string.shooting_button);
           switchMode.setEnabled(false);
 
           points.setText("0");
 
-          shooter.startTimer();
-          timer.setText(shooter.getTimeLeftText());
+          timer.startTimer();
+          timerText.setText(timer.getTimeLeftText());
 
           Toast.makeText(HelloArActivity.this,
-                  "Shoot em!", Toast.LENGTH_LONG).show();
+                  R.string.shoot_toast, Toast.LENGTH_LONG).show();
         }
         else Toast.makeText(HelloArActivity.this,
-                "Please place at least two targets", Toast.LENGTH_LONG).show();
+                R.string.two_toast, Toast.LENGTH_LONG).show();
         break;
     }
   }
 
   private void UpdateTimer()
   {
-    shooter.tickTimer();
-    timer.setText(shooter.getTimeLeftText());
-    timer.invalidate();
-    timer.requestLayout();
+    timer.tickTimer();
+    timerText.setText(timer.getTimeLeftText());
+    timerText.invalidate();
+    timerText.requestLayout();
 
-    if(shooter.getTimeLeft()<= 0){
+    if(timer.getTimeLeft()<= 0){
       Intent i = new Intent(this, ScoreboardActivity.class);
       Bundle bundle = new Bundle();
       bundle.putString("SCORE", String.valueOf(m_Score.getPoints()));
+<<<<<<< HEAD
       bundle.putString("TIME", "10:00");
       bundle.putInt("volume", seekVol);
+=======
+      bundle.putString("TIME", String.valueOf(timer.getTimerDuration()));
+>>>>>>> b76b33fed2863fc5c3474d45bc0c15189e013b56
       i.putExtras(bundle);
       startActivity(i);
     }
