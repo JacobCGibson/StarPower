@@ -23,7 +23,6 @@ import android.media.MediaPlayer;
 import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.util.AtomicFile;
 import android.util.Log;
@@ -124,9 +123,9 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
 
   private Button switchMode;
   private TextView points;
-  private TextView timer;
+  private TextView timerText;
 
-  private ShootingGallery shooter = new ShootingGallery();
+  private Timer timer = new Timer();
 
   private MediaPlayer laserSound;
 
@@ -150,7 +149,7 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
 
     // points label
     points = (TextView) findViewById(R.id.pointsView);
-    timer = (TextView) findViewById(R.id.timeView);
+    timerText = (TextView) findViewById(R.id.timeView);
 
     // sounds
     laserSound = MediaPlayer.create(this, R.raw.laser);
@@ -412,8 +411,8 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
 
           points.setText("0");
 
-          shooter.startTimer();
-          timer.setText(shooter.getTimeLeftText());
+          timer.startTimer();
+          timerText.setText(timer.getTimeLeftText());
 
           Toast.makeText(HelloArActivity.this,
                   R.string.shoot_toast, Toast.LENGTH_LONG).show();
@@ -426,16 +425,16 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
 
   private void UpdateTimer()
   {
-    shooter.tickTimer();
-    timer.setText(shooter.getTimeLeftText());
-    timer.invalidate();
-    timer.requestLayout();
+    timer.tickTimer();
+    timerText.setText(timer.getTimeLeftText());
+    timerText.invalidate();
+    timerText.requestLayout();
 
-    if(shooter.getTimeLeft()<= 0){
+    if(timer.getTimeLeft()<= 0){
       Intent i = new Intent(this, ScoreboardActivity.class);
       Bundle bundle = new Bundle();
       bundle.putString("SCORE", String.valueOf(m_Score.getPoints()));
-      bundle.putString("TIME", "10:00");
+      bundle.putString("TIME", String.valueOf(timer.getTimerDuration()));
       i.putExtras(bundle);
       startActivity(i);
     }
