@@ -432,10 +432,13 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
     timer.requestLayout();
 
     if(shooter.getTimeLeft()<= 0){
-      Intent scoreBoardIntent = new Intent(getApplicationContext(), ScoreboardActivity.class);
-      startActivity(scoreBoardIntent);
+      Intent i = new Intent(this, ScoreboardActivity.class);
+      Bundle bundle = new Bundle();
+      bundle.putString("SCORE", String.valueOf(m_Score.getPoints()));
+      bundle.putString("TIME", "10:00");
+      i.putExtras(bundle);
+      startActivity(i);
     }
-
   }
 
   // Handle only one tap per frame, as taps are usually low frequency compared to frame rate.
