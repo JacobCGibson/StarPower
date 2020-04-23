@@ -48,12 +48,14 @@ public class ScoreboardActivity extends Activity implements View.OnClickListener
         Bundle bundle = getIntent().getExtras();
 
         //Extract the data…
-        String score = getIntent().getStringExtra("SCORE");
+        String scoreString = getIntent().getStringExtra("SCORE");
         String time = getIntent().getStringExtra("TIME");
 
-        scoreText.setText(score);
+        scoreText.setText(scoreString);
         timeText.setText(time + " seconds");
         mainMenuButton.setOnClickListener(this);
+
+        int score = Integer.parseInt(scoreString);
 
         runQuery(db);
 
