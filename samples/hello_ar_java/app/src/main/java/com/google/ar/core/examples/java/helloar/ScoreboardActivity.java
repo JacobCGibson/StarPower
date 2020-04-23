@@ -37,11 +37,12 @@ public class ScoreboardActivity extends Activity implements View.OnClickListener
         initials = (EditText) findViewById(R.id.initials);
         scoreText = (TextView) findViewById(R.id.score);
         timeText = (TextView) findViewById(R.id.time);
-        //highScoresText = (TextView) findViewById(R.id.highScoresRecycler);
 
         //reference buttons
         save = (Button) findViewById(R.id.save);
         mainMenuButton = (Button) findViewById(R.id.mainMenuButton);
+        ScoreboardDB dbhelper = new ScoreboardDB(getApplicationContext());
+        SQLiteDatabase db = dbhelper.getWritableDatabase();
 
         //Get the bundle
         Bundle bundle = getIntent().getExtras();
@@ -52,50 +53,14 @@ public class ScoreboardActivity extends Activity implements View.OnClickListener
 
         scoreText.setText(score);
         timeText.setText(time + " seconds");
-
         mainMenuButton.setOnClickListener(this);
+
+        runQuery(db);
+
         save.setOnClickListener(v -> {
 
             //ScoreboardDB helper created whenever user clicks on the save button
-            ScoreboardDB dbhelper = new ScoreboardDB(getApplicationContext());
-            SQLiteDatabase db = dbhelper.getWritableDatabase();
             ContentValues values = new ContentValues();
-
-            String[] projection = {
-                    ScoreboardAttr.ScoreboardEntry.COLUMN_INITIALS,
-                    ScoreboardAttr.ScoreboardEntry.COLUMN_SCORE,
-                    ScoreboardAttr.ScoreboardEntry.COLUMN_TIME
-            };
-
-            String[] bind = {
-                    ScoreboardAttr.ScoreboardEntry._ID,
-                    ScoreboardAttr.ScoreboardEntry.COLUMN_INITIALS,
-                    ScoreboardAttr.ScoreboardEntry.COLUMN_SCORE,
-                    ScoreboardAttr.ScoreboardEntry.COLUMN_TIME
-            };
-
-            //Cursor cursor = db.query(ScoreboardAttr.ScoreboardEntry.TABLE_NAME, //table to query
-             //       bind,
-             //null, //columns for where, Null will return all rows
-             //       null, //values for where
-             //       null, //Group By, null is no group by
-             //       null, //Having, null says return all rows
-             //       ScoreboardAttr.ScoreboardEntry.COLUMN_SCORE + " ASC" //names in alpabetical order
-            //);
-
-            //array containing the 3 player attributes
-            //int[] attr = new int[]{R.id.highInitials,  R.id.highScore, R.id.highTime,};
-
-            //cursor adapter
-            //SimpleCursorAdapter adapter = new SimpleCursorAdapter(getApplicationContext(), R.layout.activity_scoreboard, cursor, projection, attr, 0);
-
-            //set the list to the adapter
-            //final ListView listView = (ListView) findViewById(R.id.highScoresRecycler);
-            //listView.setAdapter(adapter);
-
-            //prepare "empty" TextLayout
-            //TextView emptyView = (TextView) findViewById(android.R.id.empty);
-            //listView.setEmptyView(emptyView);
 
             //time
             values.put(ScoreboardAttr.ScoreboardEntry.COLUMN_TIME, time);
@@ -128,6 +93,8 @@ public class ScoreboardActivity extends Activity implements View.OnClickListener
 
             //reset the input fields
             initials.setText("");
+
+            runQuery(db);
         });
     }
 
@@ -139,5 +106,43 @@ public class ScoreboardActivity extends Activity implements View.OnClickListener
                 startActivity(menuIntent);
                 break;
         }
+    }
+    public void runQuery(SQLiteDatabase db){
+        String[] projection = {
+                ScoreboardAttr.ScoreboardEntry.COLUMN_INITIALS,
+                ScoreboardAttr.ScoreboardEntry.COLUMN_SCORE,
+                ScoreboardAttr.ScoreboardEntry.COLUMN_TIME
+        };
+
+        String[] bind = {
+                ScoreboardAttr.ScoreboardEntry._ID,
+                ScoreboardAttr.ScoreboardEntry.COLUMN_INITIALS,
+                ScoreboardAttr.ScoreboardEntry.COLUMN_SCORE,
+                ScoreboardAttr.ScoreboardEntry.COLUMN_TIME
+        };
+
+        Cursor cursor = db.query(ScoreboardAttr.ScoreboardEntry.TABLE_NAME, //table to query
+                bind,
+                null, //columns for where, Null will return all rows
+                null, //values for where
+                null, //Group By, null is no group by
+                null, //Having, null says return all rows
+                ScoreboardAttr.ScoreboardEntry.COLUMN_SCORE + " DESC",
+                "10"//names in alpabetical order
+        );
+
+        //array containing the 3 player attributes
+        int[] attr = new int[]{R.id.highInitials,  R.id.highScore, R.id.highTime,};
+
+        //cursor adapter
+        SimpleCursorAdapter adapter = new SimpleCursorAdapter(getApplicationContext(), R.layout.row_item, cursor, projection, attr, 0);
+
+        //set the list to the adapter
+        final ListView listView = (ListView) findViewById(R.id.list);
+        listView.setAdapter(adapter);
+
+        //prepare "empty" TextLayout
+        TextView emptyView = (TextView) findViewById(android.R.id.empty);
+        listView.setEmptyView(emptyView);
     }
 }
