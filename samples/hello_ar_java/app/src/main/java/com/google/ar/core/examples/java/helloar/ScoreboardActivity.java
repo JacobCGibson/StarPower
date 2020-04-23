@@ -95,6 +95,9 @@ public class ScoreboardActivity extends Activity implements View.OnClickListener
             initials.setText("");
 
             runQuery(db);
+            
+            save.setEnabled(false);
+            initials.setEnabled(false);
         });
     }
 
