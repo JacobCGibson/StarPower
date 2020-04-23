@@ -5,10 +5,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.SeekBar;
 
-public class SettingsMenuActivity extends Activity implements View.OnClickListener{
+public class SettingsMenuActivity extends Activity implements View.OnClickListener, SeekBar.OnSeekBarChangeListener{
 
     Button menu, restore;
+    SeekBar volume;
+    private final int maxVolume = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,9 +21,13 @@ public class SettingsMenuActivity extends Activity implements View.OnClickListen
 
         menu = (Button) findViewById(R.id.buttonMenu);
         restore = (Button) findViewById(R.id.button);
+        volume = (SeekBar) findViewById(R.id.seekVolume);
+        volume.setProgress(getIntent().getIntExtra("volume", maxVolume/2));
+        volume.setMax(maxVolume);
 
         menu.setOnClickListener(this);
         restore.setOnClickListener(this);
+        volume.setOnSeekBarChangeListener(this);
     }
 
     @Override
@@ -28,11 +35,26 @@ public class SettingsMenuActivity extends Activity implements View.OnClickListen
         switch (v.getId()) {
             case R.id.buttonMenu:
                 Intent mainIntent = new Intent(getApplicationContext(), MainMenuActivity.class);
+                mainIntent.putExtra("volume", volume.getProgress());
                 startActivity(mainIntent);
                 break;
             case R.id.button:
                 //restore purchases code here
                 break;
         }
+    }
+
+    @Override
+    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+    }
+
+    @Override
+    public void onStartTrackingTouch(SeekBar seekBar) {
+
+    }
+
+    @Override
+    public void onStopTrackingTouch(SeekBar seekBar) {
+
     }
 }

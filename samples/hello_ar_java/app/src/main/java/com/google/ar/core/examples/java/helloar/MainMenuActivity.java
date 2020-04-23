@@ -31,10 +31,12 @@ public class MainMenuActivity extends Activity implements View.OnClickListener{
         switch (v.getId()) {
             case R.id.settingsButton:
                 Intent settingsIntent = new Intent(getApplicationContext(), SettingsMenuActivity.class);
+                settingsIntent.putExtra("volume", getIntent().getIntExtra("volume", 50));
                 startActivity(settingsIntent);
                 break;
             case R.id.playButton:
                 Intent mainIntent = new Intent(getApplicationContext(), HelloArActivity.class);
+                mainIntent.putExtra("volume", getIntent().getIntExtra("volume", 50));
                 startActivity(mainIntent);
                 break;
             case R.id.customizeButton:

@@ -125,9 +125,15 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
   private TextView points;
   private TextView timerText;
 
+
+  private ShootingGallery shooter = new ShootingGallery();
+  private Settings m_settings = new Settings();
   private Timer timer = new Timer();
 
   private MediaPlayer laserSound;
+  private final static int MAX_VOLUME = 100;
+  private int seekVol = 50;
+  private float volume = 0;
 
   private final ArrayList<ColoredAnchor> anchors = new ArrayList<>();
   private ArrayList<java.lang.Boolean> isVisible = new ArrayList<>();
@@ -153,6 +159,9 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
 
     // sounds
     laserSound = MediaPlayer.create(this, R.raw.laser);
+    seekVol = getIntent().getIntExtra("volume", 50);
+    volume = (float) (1 - (Math.log(MAX_VOLUME - seekVol) / Math.log(MAX_VOLUME)));
+    laserSound.setVolume(volume, volume);
 
     // Set up renderer.
     surfaceView.setPreserveEGLContextOnPause(true);
@@ -241,7 +250,7 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
     displayRotationHelper.onResume();
 
     Toast.makeText(HelloArActivity.this,
-            "place some targets!", Toast.LENGTH_LONG).show();
+            R.string.place_toast, Toast.LENGTH_LONG).show();
   }
 
   @Override
@@ -260,7 +269,7 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
   @Override
   public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] results) {
     if (!CameraPermissionHelper.hasCameraPermission(this)) {
-      Toast.makeText(this, "Camera permission is needed to run this application", Toast.LENGTH_LONG)
+      Toast.makeText(this, R.string.camera_toast, Toast.LENGTH_LONG)
               .show();
       if (!CameraPermissionHelper.shouldShowRequestPermissionRationale(this)) {
         // Permission denied with checking "Do not ask again".
@@ -406,7 +415,7 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
         if (currMode == Mode.SCANNING
                 && anchors.size() >= 2) {
           currMode = Mode.SHOOTING;
-          switchMode.setText("Shooting");
+          switchMode.setText(R.string.shooting_button);
           switchMode.setEnabled(false);
 
           points.setText("0");
@@ -415,10 +424,10 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
           timerText.setText(timer.getTimeLeftText());
 
           Toast.makeText(HelloArActivity.this,
-                  "Shoot em!", Toast.LENGTH_LONG).show();
+                  R.string.shoot_toast, Toast.LENGTH_LONG).show();
         }
         else Toast.makeText(HelloArActivity.this,
-                "Please place at least two targets", Toast.LENGTH_LONG).show();
+                R.string.two_toast, Toast.LENGTH_LONG).show();
         break;
     }
   }
@@ -434,6 +443,8 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
       Intent i = new Intent(this, ScoreboardActivity.class);
       Bundle bundle = new Bundle();
       bundle.putString("SCORE", String.valueOf(m_Score.getPoints()));
+      bundle.putString("TIME", "10:00");
+      bundle.putInt("volume", seekVol);
       bundle.putString("TIME", String.valueOf(timer.getTimerDuration()));
       i.putExtras(bundle);
       startActivity(i);
