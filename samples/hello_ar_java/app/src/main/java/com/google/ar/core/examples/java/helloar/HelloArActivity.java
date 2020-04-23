@@ -520,7 +520,8 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
             }
             // if target is hit add points and update display
             if (isHit) {
-              m_Score.addPoints(100);
+              int adjustedPoints = (int)hit.getDistance();
+              m_Score.addPoints(100*adjustedPoints);
               points.setText(String.valueOf(m_Score.getPoints()));
               points.invalidate();  //need to force android to update points before continuing
               points.requestLayout();
