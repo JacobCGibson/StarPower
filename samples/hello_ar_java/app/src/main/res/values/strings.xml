@@ -14,7 +14,7 @@
    limitations under the License.
 -->
 <resources>
-    <string name="app_name">HelloAR Java</string>
+    <string name="app_name">Star Power</string>
     <string name="title_activity_main_menu">MainMenuActivity</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
