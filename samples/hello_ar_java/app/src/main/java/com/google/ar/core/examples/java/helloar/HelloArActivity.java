@@ -127,8 +127,12 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
   private TextView timer;
 
   private ShootingGallery shooter = new ShootingGallery();
+  private Settings m_settings = new Settings();
 
   private MediaPlayer laserSound;
+  private final static int MAX_VOLUME = 100;
+  private int seekVol = 50;
+  private float volume = 0;
 
   private final ArrayList<ColoredAnchor> anchors = new ArrayList<>();
   private ArrayList<java.lang.Boolean> isVisible = new ArrayList<>();
@@ -154,6 +158,9 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
 
     // sounds
     laserSound = MediaPlayer.create(this, R.raw.laser);
+    seekVol = getIntent().getIntExtra("volume", 50);
+    volume = (float) (1 - (Math.log(MAX_VOLUME - seekVol) / Math.log(MAX_VOLUME)));
+    laserSound.setVolume(volume, volume);
 
     // Set up renderer.
     surfaceView.setPreserveEGLContextOnPause(true);
@@ -436,6 +443,7 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
       Bundle bundle = new Bundle();
       bundle.putString("SCORE", String.valueOf(m_Score.getPoints()));
       bundle.putString("TIME", "10:00");
+      bundle.putInt("volume", seekVol);
       i.putExtras(bundle);
       startActivity(i);
     }

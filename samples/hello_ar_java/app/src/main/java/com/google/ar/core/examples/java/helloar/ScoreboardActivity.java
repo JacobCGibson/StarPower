@@ -136,6 +136,7 @@ public class ScoreboardActivity extends Activity implements View.OnClickListener
         switch (v.getId()) {
             case R.id.mainMenuButton:
                 Intent menuIntent = new Intent(getApplicationContext(), MainMenuActivity.class);
+                menuIntent.putExtra("volume", getIntent().getIntExtra("volume", 50));
                 startActivity(menuIntent);
                 break;
         }

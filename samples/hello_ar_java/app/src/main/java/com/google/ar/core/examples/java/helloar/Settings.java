@@ -19,6 +19,8 @@ public class Settings {
         volume += newVolume;
     }
 
+    public int getVolume() { return volume; }
+
     public void selectCustomization(){
 
     }
