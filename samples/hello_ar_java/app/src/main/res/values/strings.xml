@@ -24,4 +24,67 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+
+    <!--
+    Strings Index
+
+    1. Main Menu
+    2. Settings
+    3. Main Activity
+    4. Scoreboard
+    5. Owned Customization
+    6. Customization Shop
+    -->
+
+
+    // 1. Main Menu
+    <string name="play_button">Play</string>
+    <string name="customize_button">Customize</string>
+    <string name="settings_button">Settings</string>
+
+    // 2. Settings
+    <string name="menu_button">Menu</string>
+    <string name="settings_label">Settings</string>
+    <string name="volume_label">Volume</string>
+    <string name="res_purch_button">Restore Purchases</string>
+
+    // 3. Main Activity
+    <string name="scanning_button">Scanning</string>
+    <string name="shooting_button">Shooting</string>
+    <string name="points_label">Points</string>
+    <string name="time_label">Time</string>
+
+    <string name="place_toast">Place some targets!</string>
+    <string name="two_toast">Please place at least two targets</string>
+    <string name="shoot_toast">Shoot Em!</string>
+
+    <string name="camera_toast">Camera permission is needed to run this application.</string>
+
+    // 4. Scoreboard
+    <string name="high_label">HIGH SCORES</string>
+    <string name="f_score_label">Your score:</string>
+    <string name="f_time_label">Your time:</string>
+    <string name="initial_label">Please enter your initials.</string>
+    <string name="save_button">Save Score</string>
+    <string name="return_button">Main Menu</string>
+
+    // 5. Owned Customizations
+    <string name="owned_label">Owned Customizations</string>
+    <string name="o_menu_button">Menu</string>
+    <string name="o_shop_button">Shop</string>
+    <string name="custom_label">Placeholder Custom</string>
+
+    // 6. Shop
+    <string name="shop_label">Customizations Shop</string>
+    <string name="s_menu_button">Menu</string>
+    <string name="s_owned_button">Owned</string>
+    <string name="purchase_button">Purchase</string>
+    <string name="custom_label1">Placeholder Custom 1</string>
+    <string name="custom_label2">Placeholder Custom 2</string>
+    <string name="custom_descrip1">Placeholder Description 1</string>
+    <string name="custom_descrip2">Placeholder Description 2</string>
+    <string name="custom_price1">$$$$$$</string>
+    <string name="custom_price2">$$$$$$</string>
+
 </resources>

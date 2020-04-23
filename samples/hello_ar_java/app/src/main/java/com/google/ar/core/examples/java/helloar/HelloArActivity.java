@@ -242,7 +242,7 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
     displayRotationHelper.onResume();
 
     Toast.makeText(HelloArActivity.this,
-            "place some targets!", Toast.LENGTH_LONG).show();
+            R.string.place_toast, Toast.LENGTH_LONG).show();
   }
 
   @Override
@@ -261,7 +261,7 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
   @Override
   public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] results) {
     if (!CameraPermissionHelper.hasCameraPermission(this)) {
-      Toast.makeText(this, "Camera permission is needed to run this application", Toast.LENGTH_LONG)
+      Toast.makeText(this, R.string.camera_toast, Toast.LENGTH_LONG)
               .show();
       if (!CameraPermissionHelper.shouldShowRequestPermissionRationale(this)) {
         // Permission denied with checking "Do not ask again".
@@ -407,7 +407,7 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
         if (currMode == Mode.SCANNING
                 && anchors.size() >= 2) {
           currMode = Mode.SHOOTING;
-          switchMode.setText("Shooting");
+          switchMode.setText(R.string.shooting_button);
           switchMode.setEnabled(false);
 
           points.setText("0");
@@ -416,10 +416,10 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
           timer.setText(shooter.getTimeLeftText());
 
           Toast.makeText(HelloArActivity.this,
-                  "Shoot em!", Toast.LENGTH_LONG).show();
+                  R.string.shoot_toast, Toast.LENGTH_LONG).show();
         }
         else Toast.makeText(HelloArActivity.this,
-                "Please place at least two targets", Toast.LENGTH_LONG).show();
+                R.string.two_toast, Toast.LENGTH_LONG).show();
         break;
     }
   }
