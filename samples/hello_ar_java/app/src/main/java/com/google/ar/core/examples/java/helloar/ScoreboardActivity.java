@@ -51,7 +51,7 @@ public class ScoreboardActivity extends Activity implements View.OnClickListener
         String time = getIntent().getStringExtra("TIME");
 
         scoreText.setText(score);
-        timeText.setText(time);
+        timeText.setText(time + " seconds");
 
         mainMenuButton.setOnClickListener(this);
         save.setOnClickListener(v -> {

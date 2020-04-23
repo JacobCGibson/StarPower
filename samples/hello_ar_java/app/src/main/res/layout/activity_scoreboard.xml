@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="10dp"
-        android:text="HIGH SCORES"
+        android:text="@string/high_label"
         android:textAllCaps="true"
         android:textSize="36sp"
         app:layout_constraintBottom_toTopOf="@+id/highScoresRecycler"
@@ -38,7 +38,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:text="Save Score"
+        android:text="@string/save_button"
 
 
         app:layout_constraintBottom_toBottomOf="@+id/initials"
@@ -55,13 +55,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:hint="Enter your initials"
+        android:hint="@string/initial_label"
 
 
+        android:inputType="textCapCharacters"
         app:layout_constraintBottom_toBottomOf="@+id/time"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
 
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/save" />
 
@@ -70,9 +71,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:layout_marginRight="20dp"
-        android:text="YOUR SCORE"
-        app:layout_constraintBottom_toBottomOf="@+id/score"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="72dp"
+        android:text="@string/f_score_label"
+        app:layout_constraintBottom_toTopOf="@+id/initials"
         app:layout_constraintEnd_toStartOf="@+id/score" />
 
     <TextView
@@ -93,9 +95,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:layout_marginRight="20dp"
-        android:text="YOUR TIME"
-        app:layout_constraintBottom_toBottomOf="@+id/time"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="28dp"
+        android:text="@string/f_time_label"
+        app:layout_constraintBottom_toTopOf="@+id/initials"
         app:layout_constraintEnd_toStartOf="@+id/time" />
 
     <TextView
@@ -115,12 +118,14 @@
         android:id="@+id/mainMenuButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:text="Main Menu"
+        android:layout_marginBottom="28dp"
+        android:text="@string/return_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/highScoresRecycler"
+        app:layout_constraintVertical_bias="0.959" />
 
 
 </android.support.constraint.ConstraintLayout>
