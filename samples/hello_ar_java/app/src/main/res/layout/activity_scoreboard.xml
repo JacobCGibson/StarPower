@@ -70,9 +70,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:layout_marginRight="20dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="72dp"
         android:text="YOUR SCORE"
-        app:layout_constraintBottom_toBottomOf="@+id/score"
+        app:layout_constraintBottom_toTopOf="@+id/initials"
         app:layout_constraintEnd_toStartOf="@+id/score" />
 
     <TextView
@@ -93,9 +94,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:layout_marginRight="20dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="28dp"
         android:text="YOUR TIME"
-        app:layout_constraintBottom_toBottomOf="@+id/time"
+        app:layout_constraintBottom_toTopOf="@+id/initials"
         app:layout_constraintEnd_toStartOf="@+id/time" />
 
     <TextView
@@ -115,12 +117,14 @@
         android:id="@+id/mainMenuButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
+        android:layout_marginBottom="28dp"
         android:text="Main Menu"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/highScoresRecycler"
+        app:layout_constraintVertical_bias="0.959" />
 
 
 </android.support.constraint.ConstraintLayout>
