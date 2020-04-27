@@ -16,15 +16,12 @@
 
 package com.google.ar.core.examples.java.helloar;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.AtomicFile;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -40,7 +37,6 @@ import com.google.ar.core.Plane;
 import com.google.ar.core.Point;
 import com.google.ar.core.Point.OrientationMode;
 import com.google.ar.core.PointCloud;
-import com.google.ar.core.Pose;
 import com.google.ar.core.Session;
 import com.google.ar.core.Trackable;
 import com.google.ar.core.TrackingState;
@@ -52,7 +48,6 @@ import com.google.ar.core.examples.java.common.helpers.TapHelper;
 import com.google.ar.core.examples.java.common.helpers.TrackingStateHelper;
 import com.google.ar.core.examples.java.common.rendering.BackgroundRenderer;
 import com.google.ar.core.examples.java.common.rendering.ObjectRenderer;
-import com.google.ar.core.examples.java.common.rendering.ObjectRenderer.BlendMode;
 import com.google.ar.core.examples.java.common.rendering.PlaneRenderer;
 import com.google.ar.core.examples.java.common.rendering.PointCloudRenderer;
 import com.google.ar.core.exceptions.CameraNotAvailableException;
@@ -67,15 +62,13 @@ import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 import android.content.res.Configuration;
 
-import org.w3c.dom.Text;
-
 /**
  * This is a simple example that shows how to create an augmented reality (AR) application using the
  * ARCore API. The application will display any detected planes and will allow the user to tap on a
  * plane to place a 3d model of the Android robot.
  */
-public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.Renderer, View.OnClickListener {
-  private static final String TAG = HelloArActivity.class.getSimpleName();
+public class ShootingGalleryActivity extends AppCompatActivity implements GLSurfaceView.Renderer, View.OnClickListener {
+  private static final String TAG = ShootingGalleryActivity.class.getSimpleName();
 
   // Rendering. The Renderers are created here, and initialized when the GL surface is created.
   private GLSurfaceView surfaceView;
@@ -125,9 +118,6 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
   private TextView points;
   private TextView timerText;
 
-
-  private ShootingGallery shooter = new ShootingGallery();
-  private Settings m_settings = new Settings();
   private Timer timer = new Timer();
 
   private MediaPlayer laserSound;
@@ -249,7 +239,7 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
     surfaceView.onResume();
     displayRotationHelper.onResume();
 
-    Toast.makeText(HelloArActivity.this,
+    Toast.makeText(ShootingGalleryActivity.this,
             R.string.place_toast, Toast.LENGTH_LONG).show();
   }
 
@@ -423,10 +413,10 @@ public class HelloArActivity extends AppCompatActivity implements GLSurfaceView.
           timer.startTimer();
           timerText.setText(timer.getTimeLeftText());
 
-          Toast.makeText(HelloArActivity.this,
+          Toast.makeText(ShootingGalleryActivity.this,
                   R.string.shoot_toast, Toast.LENGTH_LONG).show();
         }
-        else Toast.makeText(HelloArActivity.this,
+        else Toast.makeText(ShootingGalleryActivity.this,
                 R.string.two_toast, Toast.LENGTH_LONG).show();
         break;
     }

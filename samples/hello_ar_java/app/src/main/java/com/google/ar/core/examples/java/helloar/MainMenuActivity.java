@@ -2,7 +2,6 @@ package com.google.ar.core.examples.java.helloar;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -35,7 +34,7 @@ public class MainMenuActivity extends Activity implements View.OnClickListener{
                 startActivity(settingsIntent);
                 break;
             case R.id.playButton:
-                Intent mainIntent = new Intent(getApplicationContext(), HelloArActivity.class);
+                Intent mainIntent = new Intent(getApplicationContext(), ShootingGalleryActivity.class);
                 mainIntent.putExtra("volume", getIntent().getIntExtra("volume", 50));
                 startActivity(mainIntent);
                 break;

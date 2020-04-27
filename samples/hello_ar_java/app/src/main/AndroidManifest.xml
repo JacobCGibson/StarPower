@@ -44,7 +44,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".HelloArActivity"
+            android:name=".ShootingGalleryActivity"
             android:configChanges="orientation|screenSize"
             android:exported="true"
             android:screenOrientation="locked"
