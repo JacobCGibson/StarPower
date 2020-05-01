@@ -12,6 +12,7 @@ public class SettingsMenuActivity extends Activity implements View.OnClickListen
 
     Button menu, restore;
     SeekBar volume;
+    private final static int MAX_VOLUME = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
