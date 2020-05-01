@@ -7,11 +7,14 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
+
+import java.util.List;
 
 public class OwnedMenuActivity extends Activity implements View.OnClickListener{
 
     Button menu, shop;
-    RecyclerView customizations;
+    ListView customizations;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +23,7 @@ public class OwnedMenuActivity extends Activity implements View.OnClickListener{
 
         menu = (Button) findViewById(R.id.buttonMenu);
         shop = (Button) findViewById(R.id.buttonShop);
-        customizations = (RecyclerView) findViewById(R.id.recyclerView);
+        customizations = (ListView) findViewById(R.id.listView);
 
         menu.setOnClickListener(this);
         shop.setOnClickListener(this);
@@ -39,7 +42,7 @@ public class OwnedMenuActivity extends Activity implements View.OnClickListener{
                 Intent shopIntent = new Intent(getApplicationContext(), OwnedMenuActivity.class);
                 startActivity(shopIntent);
                 break;
-            case R.id.recyclerView:
+            case R.id.listView:
 
         }
     }
