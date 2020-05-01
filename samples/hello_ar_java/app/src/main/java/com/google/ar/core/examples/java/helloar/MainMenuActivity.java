@@ -4,13 +4,18 @@ import android.app.Activity;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.View;
 import android.widget.Button;
 
 public class MainMenuActivity extends Activity implements View.OnClickListener{
 
     Button settings, play, customize;
-    MediaPlayer mp;
+    public MediaPlayer mp;
+
+    private final static int MAX_VOLUME = 100;
+    private int seekVol = 50;
+    private float volume = 0;
 
 
     @Override
@@ -27,6 +32,9 @@ public class MainMenuActivity extends Activity implements View.OnClickListener{
         customize.setOnClickListener(this);
 
         mp.start();
+        seekVol = getIntent().getIntExtra("volume", 50);
+        volume = (float) (1 - (Math.log(MAX_VOLUME - seekVol) / Math.log(MAX_VOLUME)));
+        mp.setVolume(volume, volume);
     }
 
     @Override

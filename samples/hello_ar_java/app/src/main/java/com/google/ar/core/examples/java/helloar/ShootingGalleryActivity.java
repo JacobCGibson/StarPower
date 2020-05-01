@@ -172,12 +172,11 @@ public class ShootingGalleryActivity extends AppCompatActivity implements GLSurf
           blaster.setImageResource(R.drawable.gun4);
           break;
       }
-    } else
+    } else    // in case they dont have the pref file
     {
       blaster.setImageResource(R.drawable.gun);
       SharedPreferences.Editor editor = preferences.edit();
       editor.putString("blaster", "gun");
-      // editor.commit();
       editor.apply();
     }
 
