@@ -26,6 +26,7 @@ public class ScoreboardActivity extends Activity implements View.OnClickListener
     TextView timeText;
     //TextView highScoresText;
     Button save;
+    Button clear;
     Button mainMenuButton;
 
     @Override
@@ -33,6 +34,7 @@ public class ScoreboardActivity extends Activity implements View.OnClickListener
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_scoreboard);
+
         //reference text fields
         initials = (EditText) findViewById(R.id.initials);
         scoreText = (TextView) findViewById(R.id.score);
@@ -41,6 +43,8 @@ public class ScoreboardActivity extends Activity implements View.OnClickListener
         //reference buttons
         save = (Button) findViewById(R.id.save);
         mainMenuButton = (Button) findViewById(R.id.mainMenuButton);
+        clear = (Button) findViewById(R.id.clear);
+
         ScoreboardDB dbhelper = new ScoreboardDB(getApplicationContext());
         SQLiteDatabase db = dbhelper.getWritableDatabase();
 
@@ -101,6 +105,11 @@ public class ScoreboardActivity extends Activity implements View.OnClickListener
             save.setEnabled(false);
             initials.setEnabled(false);
         });
+
+        clear.setOnClickListener(v -> {
+            clearScoreboard(db);
+            runQuery(db);
+        });
     }
 
     @Override
@@ -134,7 +143,7 @@ public class ScoreboardActivity extends Activity implements View.OnClickListener
                 null, //Group By, null is no group by
                 null, //Having, null says return all rows
                 ScoreboardAttr.ScoreboardEntry.COLUMN_SCORE + " DESC",
-                "10"//names in alpabetical order
+                "10"
         );
 
         //array containing the 3 player attributes
@@ -150,5 +159,11 @@ public class ScoreboardActivity extends Activity implements View.OnClickListener
         //prepare "empty" TextLayout
         TextView emptyView = (TextView) findViewById(android.R.id.empty);
         listView.setEmptyView(emptyView);
+    }
+
+    public void clearScoreboard(SQLiteDatabase db)
+    {
+        db.delete("player",null,null);
+        db.execSQL("delete from "+ "player");
     }
 }
