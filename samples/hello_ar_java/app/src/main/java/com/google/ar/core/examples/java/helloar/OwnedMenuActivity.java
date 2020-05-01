@@ -6,15 +6,20 @@ import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class OwnedMenuActivity extends Activity implements View.OnClickListener{
 
     Button menu, shop;
     ListView customizations;
+    ArrayList<String> list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +32,28 @@ public class OwnedMenuActivity extends Activity implements View.OnClickListener{
 
         menu.setOnClickListener(this);
         shop.setOnClickListener(this);
-        customizations.setOnClickListener(this);
+
+        //create the array adapter
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(), R.layout.row_item, R.id.listView, list);
+
+        //set the list to the adapter
+        final ListView listView = (ListView) findViewById(android.R.id.list);
+        customizations.setAdapter(adapter);
+
+        TextView emptyView = (TextView) findViewById(android.R.id.empty);
+        customizations.setEmptyView(emptyView);
+
+        //need to set the On Item Click Listener
+        customizations.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String selectedItem = (String) customizations.getItemAtPosition(position);
+
+            }
+
+
+
+        });
 
     }
 
