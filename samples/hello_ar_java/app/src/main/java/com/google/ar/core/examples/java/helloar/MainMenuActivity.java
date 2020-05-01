@@ -38,6 +38,14 @@ public class MainMenuActivity extends Activity implements View.OnClickListener{
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        seekVol = getIntent().getIntExtra("volume", 50);
+        volume = (float) (1 - (Math.log(MAX_VOLUME - seekVol) / Math.log(MAX_VOLUME)));
+        mp.setVolume(volume, volume);
+    }
+
+    @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.settingsButton:
