@@ -367,8 +367,10 @@ public class ShootingGalleryActivity extends AppCompatActivity implements GLSurf
       }
 
       // Visualize planes.
-      planeRenderer.drawPlanes(
-              session.getAllTrackables(Plane.class), camera.getDisplayOrientedPose(), projmtx);
+      if (currMode != Mode.SHOOTING){
+        planeRenderer.drawPlanes(
+                session.getAllTrackables(Plane.class), camera.getDisplayOrientedPose(), projmtx);
+      }
 
       // Visualize anchors created by touch.
       float scaleFactor = 0.005f;
