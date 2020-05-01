@@ -18,6 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
+        android:fontFamily = "@font/space_font_ttf"
         android:id="@+id/customizeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -31,6 +32,7 @@
 
     <Button
         android:id="@+id/settingsButton"
+        android:fontFamily="@font/space_font_ttf"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/settings_button"
@@ -42,6 +44,7 @@
 
     <Button
         android:id="@+id/playButton"
+        android:fontFamily="@font/space_font_ttf"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/play_button"
