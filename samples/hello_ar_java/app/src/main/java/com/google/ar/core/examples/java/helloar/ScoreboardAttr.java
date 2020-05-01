@@ -10,5 +10,6 @@ public final class ScoreboardAttr {
         public static final String COLUMN_INITIALS = "initials";
         public static final String COLUMN_SCORE = "score";
         public static final String COLUMN_TIME = "time";
+        public static final String COLUMN_TARGETS = "targets";
     }
 }

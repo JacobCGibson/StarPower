@@ -3,12 +3,15 @@ package com.google.ar.core.examples.java.helloar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 
 public class OwnedMenuActivity extends Activity implements View.OnClickListener{
 
     Button menu, shop;
+    RecyclerView customizations;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,9 +20,11 @@ public class OwnedMenuActivity extends Activity implements View.OnClickListener{
 
         menu = (Button) findViewById(R.id.buttonMenu);
         shop = (Button) findViewById(R.id.buttonShop);
+        customizations = (RecyclerView) findViewById(R.id.recyclerView);
 
         menu.setOnClickListener(this);
         shop.setOnClickListener(this);
+        customizations.setOnClickListener(this);
 
     }
 
@@ -34,6 +39,8 @@ public class OwnedMenuActivity extends Activity implements View.OnClickListener{
                 Intent shopIntent = new Intent(getApplicationContext(), OwnedMenuActivity.class);
                 startActivity(shopIntent);
                 break;
+            case R.id.recyclerView:
+
         }
     }
 }
