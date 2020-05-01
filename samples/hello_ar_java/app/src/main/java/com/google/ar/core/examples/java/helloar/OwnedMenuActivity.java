@@ -2,6 +2,7 @@ package com.google.ar.core.examples.java.helloar;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -48,7 +49,11 @@ public class OwnedMenuActivity extends Activity implements View.OnClickListener{
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String selectedItem = (String) customizations.getItemAtPosition(position);
-
+                SharedPreferences preferences = getSharedPreferences("StarPower",MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putString("blaster", selectedItem);
+                // editor.commit();
+                editor.apply();
             }
 
 
