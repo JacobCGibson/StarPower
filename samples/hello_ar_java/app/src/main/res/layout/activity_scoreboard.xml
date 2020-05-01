@@ -4,9 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/scoreboard_bg"
     tools:context=".ScoreboardActivity">
 
     <TextView
+        android:textColor="@android:color/white"
         android:id="@+id/scoreTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -29,6 +31,7 @@
         tools:layout_editor_absoluteY="53dp" />
 
     <TextView
+        android:textColor="@android:color/white"
         android:id="@android:id/empty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -44,11 +47,25 @@
 
         android:layout_marginTop="80dp"
 
-
+        android:padding="5dp"
         android:text="Save Score"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/time"
         app:layout_constraintTop_toBottomOf="@+id/list" />
+
+    <Button
+        android:id="@+id/clear"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:padding="5dp"
+        android:text="Clear Scoreboard"
+        app:layout_constraintBottom_toTopOf="@+id/mainMenuButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/time" />
 
     <EditText
         android:id="@+id/initials"
@@ -70,7 +87,7 @@
         android:id="@+id/scoreText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
+        android:textColor="@android:color/white"
         android:text="YOUR SCORE"
         app:layout_constraintBottom_toBottomOf="@+id/timeText"
         app:layout_constraintEnd_toStartOf="@+id/score"
@@ -83,7 +100,7 @@
         android:id="@+id/score"
         android:layout_width="85dp"
         android:layout_height="27dp"
-
+        android:textColor="@android:color/white"
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/save"
         app:layout_constraintEnd_toStartOf="@+id/initials"
@@ -95,7 +112,7 @@
         android:id="@+id/timeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
+        android:textColor="@android:color/white"
         android:text="YOUR TIME"
         app:layout_constraintEnd_toStartOf="@+id/time"
         app:layout_constraintHorizontal_bias="0.5"
@@ -107,7 +124,7 @@
         android:layout_width="83dp"
         android:layout_height="28dp"
 
-
+        android:textColor="@android:color/white"
         app:layout_constraintBottom_toTopOf="@+id/mainMenuButton"
         app:layout_constraintEnd_toStartOf="@+id/initials"
         app:layout_constraintHorizontal_bias="0.478"
