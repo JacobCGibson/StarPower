@@ -1,27 +1,16 @@
 package com.google.ar.core.examples.java.helloar;
 
+
 public class Customization {
+    private Boolean active;
 
     //constructor
-    public Customization(){
-        isPurchased = false;
-        price = 0;
+    public Customization() {
+       active = false;
     }
 
-    public int getModel(){
-        return 0;
+    public Boolean isActive(){
+        return active;
     }
 
-    public int getPurchased(){
-        return 0;
-    }
-
-    public void purchase(int choice){
-        //validate payment through Google Play store
-
-        isPurchased = true;
-    }
-
-    private boolean isPurchased;
-    private double price;
 }
