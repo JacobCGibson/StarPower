@@ -2,6 +2,7 @@ package com.google.ar.core.examples.java.helloar;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,7 +12,6 @@ public class SettingsMenuActivity extends Activity implements View.OnClickListen
 
     Button menu, restore;
     SeekBar volume;
-    private final int maxVolume = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,12 +22,13 @@ public class SettingsMenuActivity extends Activity implements View.OnClickListen
         menu = (Button) findViewById(R.id.buttonMenu);
         restore = (Button) findViewById(R.id.button);
         volume = (SeekBar) findViewById(R.id.seekVolume);
-        volume.setProgress(getIntent().getIntExtra("volume", maxVolume/2));
-        volume.setMax(maxVolume);
+        volume.setProgress(getIntent().getIntExtra("volume", MAX_VOLUME/2));
+        volume.setMax(MAX_VOLUME);
 
         menu.setOnClickListener(this);
         restore.setOnClickListener(this);
         volume.setOnSeekBarChangeListener(this);
+
     }
 
     @Override
