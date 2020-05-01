@@ -13,6 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="HIGH SCORES"
+        android:fontFamily="@font/space_font_ttf"
         android:textAllCaps="true"
         android:textSize="36sp"
         app:layout_constraintBottom_toTopOf="@+id/list"
@@ -41,12 +42,10 @@
 
     <Button
         android:id="@+id/save"
-
+        android:fontFamily="@font/space_font_ttf"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         android:layout_marginTop="80dp"
-
         android:padding="5dp"
         android:text="Save Score"
         app:layout_constraintEnd_toEndOf="parent"
@@ -61,6 +60,7 @@
 
         android:padding="5dp"
         android:text="Clear Scoreboard"
+        android:fontFamily="@font/space_font_ttf"
         app:layout_constraintBottom_toTopOf="@+id/mainMenuButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -69,11 +69,11 @@
 
     <EditText
         android:id="@+id/initials"
-
+        android:fontFamily="@font/space_font_ttf"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:hint="Enter your initials"
+        android:hint="Enter initials"
 
 
         app:layout_constraintBottom_toTopOf="@+id/save"
@@ -89,6 +89,7 @@
         android:layout_height="wrap_content"
         android:textColor="@android:color/white"
         android:text="YOUR SCORE"
+        android:fontFamily="@font/space_font_ttf"
         app:layout_constraintBottom_toBottomOf="@+id/timeText"
         app:layout_constraintEnd_toStartOf="@+id/score"
         app:layout_constraintHorizontal_bias="0.5"
@@ -112,8 +113,9 @@
         android:id="@+id/timeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@android:color/white"
+        android:fontFamily="@font/space_font_ttf"
         android:text="YOUR TIME"
+        android:textColor="@android:color/white"
         app:layout_constraintEnd_toStartOf="@+id/time"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -130,7 +132,7 @@
         app:layout_constraintHorizontal_bias="0.478"
         app:layout_constraintStart_toEndOf="@+id/timeText"
         app:layout_constraintTop_toBottomOf="@+id/score"
-        app:layout_constraintVertical_bias="0.128" />
+        app:layout_constraintVertical_bias="0.126" />
 
     <Button
         android:id="@+id/mainMenuButton"
@@ -138,6 +140,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="144dp"
         android:text="Main Menu"
+        android:fontFamily="@font/space_font_ttf"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
