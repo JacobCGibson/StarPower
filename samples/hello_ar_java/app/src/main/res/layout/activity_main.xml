@@ -50,6 +50,7 @@
 
   <Button
       android:id="@+id/switchButton"
+      android:fontFamily = "@font/space_font_ttf"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_alignParentStart="true"
@@ -59,6 +60,7 @@
       android:text="@string/scanning_button" />
 
   <TextView
+      android:fontFamily = "@font/space_font_ttf"
       android:id="@+id/pointsView"
       android:layout_width="152dp"
       android:layout_height="wrap_content"
@@ -69,9 +71,10 @@
       android:width="200dp"
       android:text="@string/points_label"
       android:textAlignment="textStart"
-      android:textSize="30sp" />
+      android:textSize="20sp" />
 
   <TextView
+      android:fontFamily = "@font/space_font_ttf"
       android:id="@+id/timeView"
       android:layout_width="152dp"
       android:layout_height="wrap_content"
@@ -82,7 +85,7 @@
       android:width="150dp"
       android:text="@string/time_label"
       android:textAlignment="textStart"
-      android:textSize="30sp" />
+      android:textSize="20sp" />
 
 </RelativeLayout>
 
