@@ -27,7 +27,7 @@
       android:layout_gravity="top" />
 
   <ImageView
-      android:id="@+id/imageView3"
+      android:id="@+id/imageBlaster"
       android:layout_width="264dp"
       android:layout_height="211dp"
       android:layout_alignParentEnd="true"
@@ -38,7 +38,7 @@
       app:srcCompat="@drawable/gun" />
 
   <ImageView
-      android:id="@+id/imageView4"
+      android:id="@+id/imageReticle"
       android:layout_width="114dp"
       android:layout_height="75dp"
       android:layout_alignParentEnd="true"

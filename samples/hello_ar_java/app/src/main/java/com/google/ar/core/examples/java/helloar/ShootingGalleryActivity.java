@@ -17,6 +17,8 @@
 package com.google.ar.core.examples.java.helloar;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
@@ -26,6 +28,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.google.ar.core.Anchor;
@@ -117,6 +120,7 @@ public class ShootingGalleryActivity extends AppCompatActivity implements GLSurf
   private Button switchMode;
   private TextView points;
   private TextView timerText;
+  private ImageView blaster;
 
   private Timer timer = new Timer();
 
@@ -145,7 +149,37 @@ public class ShootingGalleryActivity extends AppCompatActivity implements GLSurf
 
     // points label
     points = (TextView) findViewById(R.id.pointsView);
+    // timer label
     timerText = (TextView) findViewById(R.id.timeView);
+
+    // blaster
+    blaster = (ImageView) findViewById(R.id.imageBlaster);
+    SharedPreferences preferences = getSharedPreferences("StarPower", MODE_PRIVATE);
+    if (preferences.contains("blaster"))
+    {
+      switch (preferences.getString("blaster", ""))
+      {
+        case "gun":
+          blaster.setImageResource(R.drawable.gun);
+          break;
+        case "gun2":
+          blaster.setImageResource(R.drawable.gun2);
+          break;
+        case "gun3":
+          blaster.setImageResource(R.drawable.gun3);
+          break;
+        case "gun4":
+          blaster.setImageResource(R.drawable.gun4);
+          break;
+      }
+    } else
+    {
+      blaster.setImageResource(R.drawable.gun);
+      SharedPreferences.Editor editor = preferences.edit();
+      editor.putString("blaster", "gun");
+      // editor.commit();
+      editor.apply();
+    }
 
     // sounds
     laserSound = MediaPlayer.create(this, R.raw.laser);
