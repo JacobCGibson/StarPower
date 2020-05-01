@@ -22,12 +22,11 @@
         android:id="@+id/list"
         android:layout_width="236dp"
         android:layout_height="302dp"
+        app:layout_constraintBottom_toBottomOf="@id/scoreTitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="53dp"
-        app:layout_constraintBottom_toBottomOf="@id/scoreTitle"
-        />
+        tools:layout_editor_absoluteY="53dp" />
 
     <TextView
         android:id="@android:id/empty"
@@ -35,8 +34,7 @@
         android:layout_height="wrap_content"
         android:text="NO DATA"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/save"
@@ -44,16 +42,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
+        android:layout_marginTop="80dp"
+
+
         android:text="Save Score"
-
-
-        app:layout_constraintBottom_toBottomOf="@+id/initials"
-
-
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/mainMenuButton" />
+        app:layout_constraintStart_toEndOf="@+id/time"
+        app:layout_constraintTop_toBottomOf="@+id/list" />
 
     <EditText
         android:id="@+id/initials"
@@ -64,70 +59,75 @@
         android:hint="Enter your initials"
 
 
-        app:layout_constraintBottom_toBottomOf="@+id/time"
+        app:layout_constraintBottom_toTopOf="@+id/save"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/save" />
+        app:layout_constraintHorizontal_bias="0.82"
+        app:layout_constraintStart_toEndOf="@+id/scoreText"
+        app:layout_constraintTop_toBottomOf="@+id/list"
+        app:layout_constraintVertical_bias="0.309" />
 
     <TextView
         android:id="@+id/scoreText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:layout_marginRight="20dp"
         android:text="YOUR SCORE"
-        app:layout_constraintBottom_toBottomOf="@+id/score"
-        app:layout_constraintEnd_toStartOf="@+id/score" />
+        app:layout_constraintBottom_toBottomOf="@+id/timeText"
+        app:layout_constraintEnd_toStartOf="@+id/score"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/score"
+        app:layout_constraintVertical_bias="0.142" />
 
     <TextView
         android:id="@+id/score"
-        android:layout_width="235dp"
-        android:layout_height="20dp"
+        android:layout_width="85dp"
+        android:layout_height="27dp"
 
         android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="@+id/list"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.7"
+        app:layout_constraintBottom_toTopOf="@+id/save"
+        app:layout_constraintEnd_toStartOf="@+id/initials"
         app:layout_constraintStart_toEndOf="@+id/scoreText"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/time" />
+        app:layout_constraintTop_toBottomOf="@+id/list"
+        app:layout_constraintVertical_bias="0.509" />
 
     <TextView
         android:id="@+id/timeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:layout_marginRight="20dp"
         android:text="YOUR TIME"
-        app:layout_constraintBottom_toBottomOf="@+id/time"
-        app:layout_constraintEnd_toStartOf="@+id/time" />
+        app:layout_constraintEnd_toStartOf="@+id/time"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/time" />
 
     <TextView
         android:id="@+id/time"
-        android:layout_width="235dp"
-        android:layout_height="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/score"
+        android:layout_width="83dp"
+        android:layout_height="28dp"
 
 
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.7"
+        app:layout_constraintBottom_toTopOf="@+id/mainMenuButton"
+        app:layout_constraintEnd_toStartOf="@+id/initials"
+        app:layout_constraintHorizontal_bias="0.478"
         app:layout_constraintStart_toEndOf="@+id/timeText"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/initials" />
+        app:layout_constraintTop_toBottomOf="@+id/score"
+        app:layout_constraintVertical_bias="0.128" />
 
     <Button
         android:id="@+id/mainMenuButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
+        android:layout_marginTop="144dp"
         android:text="Main Menu"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/save" />
 
 
 </android.support.constraint.ConstraintLayout>
+
+
 
