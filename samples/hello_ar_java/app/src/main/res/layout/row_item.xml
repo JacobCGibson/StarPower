@@ -8,6 +8,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/space_font_ttf"
             android:text="Empty File"
             android:padding="10dp"
             android:textColor="#0022ff"
@@ -15,6 +16,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/space_font_ttf"
             android:text="Empty File"
             android:padding="1dp"
             android:textColor="#0022ff"
@@ -23,6 +25,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/space_font_ttf"
+
             android:text="Empty File"
             android:paddingLeft="20dp"
             android:textColor="#0022ff"
