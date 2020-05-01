@@ -24,7 +24,8 @@ public class ScoreboardActivity extends Activity implements View.OnClickListener
     EditText initials;
     TextView scoreText;
     TextView timeText;
-    //TextView highScoresText;
+    TextView targetsText;
+
     Button save;
     Button clear;
     Button mainMenuButton;
@@ -39,6 +40,7 @@ public class ScoreboardActivity extends Activity implements View.OnClickListener
         initials = (EditText) findViewById(R.id.initials);
         scoreText = (TextView) findViewById(R.id.score);
         timeText = (TextView) findViewById(R.id.time);
+        targetsText = (TextView) findViewById(R.id.targets);
 
         //reference buttons
         save = (Button) findViewById(R.id.save);
@@ -54,9 +56,11 @@ public class ScoreboardActivity extends Activity implements View.OnClickListener
         //Extract the data…
         String scoreString = getIntent().getStringExtra("SCORE");
         String time = getIntent().getStringExtra("TIME");
+        String targets = getIntent().getStringExtra("NUMTARGETS");
 
         scoreText.setText(scoreString);
         timeText.setText(time + " seconds");
+        targetsText.setText(targets + " targets");
         mainMenuButton.setOnClickListener(this);
 
         int score = Integer.parseInt(scoreString);
@@ -76,6 +80,9 @@ public class ScoreboardActivity extends Activity implements View.OnClickListener
 
             //initials
             values.put(ScoreboardAttr.ScoreboardEntry.COLUMN_INITIALS, initials.getText().toString());
+
+            //targets
+            values.put(ScoreboardAttr.ScoreboardEntry.COLUMN_TARGETS, targets);
 
             //insert the values into the database
             long newRowId = db.insert(
@@ -126,14 +133,16 @@ public class ScoreboardActivity extends Activity implements View.OnClickListener
         String[] projection = {
                 ScoreboardAttr.ScoreboardEntry.COLUMN_INITIALS,
                 ScoreboardAttr.ScoreboardEntry.COLUMN_SCORE,
-                ScoreboardAttr.ScoreboardEntry.COLUMN_TIME
+                ScoreboardAttr.ScoreboardEntry.COLUMN_TIME,
+                ScoreboardAttr.ScoreboardEntry.COLUMN_TARGETS
         };
 
         String[] bind = {
                 ScoreboardAttr.ScoreboardEntry._ID,
                 ScoreboardAttr.ScoreboardEntry.COLUMN_INITIALS,
                 ScoreboardAttr.ScoreboardEntry.COLUMN_SCORE,
-                ScoreboardAttr.ScoreboardEntry.COLUMN_TIME
+                ScoreboardAttr.ScoreboardEntry.COLUMN_TIME,
+                ScoreboardAttr.ScoreboardEntry.COLUMN_TARGETS
         };
 
         Cursor cursor = db.query(ScoreboardAttr.ScoreboardEntry.TABLE_NAME, //table to query
@@ -147,7 +156,7 @@ public class ScoreboardActivity extends Activity implements View.OnClickListener
         );
 
         //array containing the 3 player attributes
-        int[] attr = new int[]{R.id.highInitials,  R.id.highScore, R.id.highTime,};
+        int[] attr = new int[]{R.id.highInitials,  R.id.highScore, R.id.highTime, R.id.numTargets};
 
         //cursor adapter
         SimpleCursorAdapter adapter = new SimpleCursorAdapter(getApplicationContext(), R.layout.row_item, cursor, projection, attr, 0);

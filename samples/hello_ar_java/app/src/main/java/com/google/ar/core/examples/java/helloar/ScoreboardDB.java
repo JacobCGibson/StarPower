@@ -13,7 +13,8 @@ public class ScoreboardDB extends SQLiteOpenHelper{
             ScoreboardAttr.ScoreboardEntry._ID + " INTEGER PRIMARY KEY" + COMMA_SEPARATOR +
             ScoreboardAttr.ScoreboardEntry.COLUMN_TIME+" "+ TEXT_TYPE + COMMA_SEPARATOR +
             ScoreboardAttr.ScoreboardEntry.COLUMN_SCORE+" "+ " INTEGER" + COMMA_SEPARATOR +
-            ScoreboardAttr.ScoreboardEntry.COLUMN_INITIALS+" "+ TEXT_TYPE + ")";
+            ScoreboardAttr.ScoreboardEntry.COLUMN_INITIALS+" "+ TEXT_TYPE + COMMA_SEPARATOR +
+            ScoreboardAttr.ScoreboardEntry.COLUMN_TARGETS+" "+ TEXT_TYPE + ")";
 
     //deletion statement
     private static final String SQL_DELETE =

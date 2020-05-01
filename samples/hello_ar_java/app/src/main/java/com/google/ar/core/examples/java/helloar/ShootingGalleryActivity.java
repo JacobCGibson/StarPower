@@ -172,12 +172,11 @@ public class ShootingGalleryActivity extends AppCompatActivity implements GLSurf
           blaster.setImageResource(R.drawable.gun4);
           break;
       }
-    } else
+    } else    // in case they dont have the pref file
     {
       blaster.setImageResource(R.drawable.gun);
       SharedPreferences.Editor editor = preferences.edit();
       editor.putString("blaster", "gun");
-      // editor.commit();
       editor.apply();
     }
 
@@ -469,9 +468,9 @@ public class ShootingGalleryActivity extends AppCompatActivity implements GLSurf
       Intent i = new Intent(this, ScoreboardActivity.class);
       Bundle bundle = new Bundle();
       bundle.putString("SCORE", String.valueOf(m_Score.getPoints()));
-      bundle.putString("TIME", "10:00");
       bundle.putInt("volume", seekVol);
       bundle.putString("TIME", String.valueOf(timer.getTimerDuration()));
+      bundle.putString("NUMTARGETS", String.valueOf(anchors.size()));
       i.putExtras(bundle);
       startActivity(i);
     }
