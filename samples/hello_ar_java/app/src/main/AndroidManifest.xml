@@ -55,8 +55,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ScoreboardActivity"
-                  android:screenOrientation="locked">
+        <activity android:name=".ScoreboardActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
