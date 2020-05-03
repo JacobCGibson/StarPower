@@ -24,6 +24,7 @@ import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -554,7 +555,11 @@ public class ShootingGalleryActivity extends AppCompatActivity implements GLSurf
           laserSound.start();
 
           // set tap to middle of screen
-          tap.setLocation(500, 1000);
+          DisplayMetrics displayMetrics = new DisplayMetrics();
+          getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+          int height = displayMetrics.heightPixels;
+          int width = displayMetrics.widthPixels;
+          tap.setLocation(width/2, height/2);
 
           for (HitResult hit : frame.hitTest(tap)) {
             // hit detection
