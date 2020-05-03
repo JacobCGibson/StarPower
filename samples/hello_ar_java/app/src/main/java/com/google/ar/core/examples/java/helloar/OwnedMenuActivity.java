@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,15 +58,16 @@ public class OwnedMenuActivity extends Activity implements View.OnClickListener{
 
                 Customization data= dataModel.get(position);
 
-                //Snackbar.make(view, data.getName(), Snackbar.LENGTH_LONG)
-                        //.setAction("No action", null).show();
+                Customization selectedItem = (Customization) customizations.getItemAtPosition(position);
+                Integer imageRef = selectedItem.getImage();
+                SharedPreferences preferences = getSharedPreferences("StarPower",MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putString("blaster", imageRef.toString());
+                //editor.commit();
+                editor.apply();
 
-                //String selectedItem = (String) customizations.getItemAtPosition(position);
-                //SharedPreferences preferences = getSharedPreferences("StarPower",MODE_PRIVATE);
-                //SharedPreferences.Editor editor = preferences.edit();
-                //editor.putString("blaster", selectedItem);
-                // editor.commit();
-                //editor.apply();
+                Toast
+
             }
 
         });
