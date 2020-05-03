@@ -478,7 +478,7 @@ public class ShootingGalleryActivity extends AppCompatActivity implements GLSurf
       Bundle bundle = new Bundle();
       bundle.putString("score", String.valueOf(m_Score.getPoints()));
       bundle.putInt("volume", seekVol);
-      bundle.putString("time", (int)(timer.getTimerDuration()));
+      bundle.putInt("time", (int)(timer.getTimerDuration()));
       bundle.putString("NUMTARGETS", String.valueOf(anchors.size()));
       i.putExtras(bundle);
       startActivity(i);
