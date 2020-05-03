@@ -476,9 +476,9 @@ public class ShootingGalleryActivity extends AppCompatActivity implements GLSurf
     if(timer.getTimeLeft()<= 0){
       Intent i = new Intent(this, ScoreboardActivity.class);
       Bundle bundle = new Bundle();
-      bundle.putString("SCORE", String.valueOf(m_Score.getPoints()));
+      bundle.putString("score", String.valueOf(m_Score.getPoints()));
       bundle.putInt("volume", seekVol);
-      bundle.putString("TIME", String.valueOf(timer.getTimerDuration()));
+      bundle.putString("time", (int)(timer.getTimerDuration()));
       bundle.putString("NUMTARGETS", String.valueOf(anchors.size()));
       i.putExtras(bundle);
       startActivity(i);
@@ -544,6 +544,10 @@ public class ShootingGalleryActivity extends AppCompatActivity implements GLSurf
         }
         break;
       case SHOOTING:
+        
+        //disable switch button
+        switchMode.setEnabled(false);
+        
         if (tap != null && camera.getTrackingState() == TrackingState.TRACKING
             && !laserSound.isPlaying()) {
           // play sound
