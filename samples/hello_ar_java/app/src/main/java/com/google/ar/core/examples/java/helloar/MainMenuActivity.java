@@ -56,6 +56,7 @@ public class MainMenuActivity extends Activity implements View.OnClickListener{
             case R.id.playButton:
                 Intent mainIntent = new Intent(getApplicationContext(), ShootingGalleryActivity.class);
                 mainIntent.putExtra("volume", getIntent().getIntExtra("volume", 50));
+                mainIntent.putExtra("time", getIntent().getIntExtra("time", 50));
                 mp.stop();
                 startActivity(mainIntent);
                 break;
