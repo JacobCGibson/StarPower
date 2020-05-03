@@ -39,10 +39,14 @@ public class OwnedMenuActivity extends Activity implements View.OnClickListener{
 
         dataModel= new ArrayList<>();
 
-        dataModel.add(new Customization("Red", R.drawable.gun));
-        dataModel.add(new Customization("Blue", R.drawable.gun2));
-        dataModel.add(new Customization("Gold", R.drawable.gun3));
-        dataModel.add(new Customization("Silver", R.drawable.gun4));
+        dataModel.add(new Customization("Blaster - Red", R.drawable.gun));
+        dataModel.add(new Customization("Blaster - Blue", R.drawable.gun2));
+        dataModel.add(new Customization("Blaster - Gold", R.drawable.gun3));
+        dataModel.add(new Customization("Blaster - Silver", R.drawable.gun4));
+
+        dataModel.add(new Customization("Target - Red", R.drawable.red_target));
+        dataModel.add(new Customization("Target - Blue", R.drawable.blue_target));
+        dataModel.add(new Customization("Target - Green", R.drawable.green_target));
 
         adapter= new CustomAdapter(dataModel,getApplicationContext());
 
