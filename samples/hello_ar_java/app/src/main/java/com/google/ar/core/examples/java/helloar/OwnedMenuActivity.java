@@ -20,7 +20,7 @@ import java.util.List;
 
 public class OwnedMenuActivity extends Activity implements View.OnClickListener{
 
-    Button menu, shop;
+    Button menu;
     ListView customizations;
     ArrayList<Customization> dataModel;
     private static CustomAdapter adapter;
@@ -31,11 +31,9 @@ public class OwnedMenuActivity extends Activity implements View.OnClickListener{
         setContentView(R.layout.activity_owned_menu);
 
         menu = (Button) findViewById(R.id.buttonMenu);
-        shop = (Button) findViewById(R.id.buttonShop);
         customizations = (ListView) findViewById(R.id.listView);
 
         menu.setOnClickListener(this);
-        shop.setOnClickListener(this);
 
         dataModel= new ArrayList<>();
 
