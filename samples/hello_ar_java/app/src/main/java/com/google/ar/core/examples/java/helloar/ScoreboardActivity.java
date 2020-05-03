@@ -3,6 +3,7 @@ package com.google.ar.core.examples.java.helloar;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
@@ -49,13 +50,12 @@ public class ScoreboardActivity extends Activity implements View.OnClickListener
 
         ScoreboardDB dbhelper = new ScoreboardDB(getApplicationContext());
         SQLiteDatabase db = dbhelper.getWritableDatabase();
-        //dbhelper.refreshScoreboard(db);
 
         //Get the bundle
         Bundle bundle = getIntent().getExtras();
 
         //Extract the data…
-        String scoreString = getIntent().getStringExtra("SCORE");
+        String scoreString = getIntent().getStringExtra("score");
         int time = getIntent().getIntExtra("time", 50);
         String targets = getIntent().getStringExtra("NUMTARGETS");
 
@@ -109,7 +109,7 @@ public class ScoreboardActivity extends Activity implements View.OnClickListener
             initials.setText("");
 
             runQuery(db);
-            
+
             save.setEnabled(false);
             initials.setEnabled(false);
         });
@@ -119,7 +119,14 @@ public class ScoreboardActivity extends Activity implements View.OnClickListener
             runQuery(db);
         });
     }
-
+    /*
+        @Override
+        public void onConfigurationChanged(Configuration newConfig) {
+            super.onConfigurationChanged(newConfig);
+            save.setEnabled(false);
+            initials.setEnabled(false);
+        }
+    */
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
