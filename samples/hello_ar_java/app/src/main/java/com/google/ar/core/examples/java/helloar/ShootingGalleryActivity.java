@@ -164,21 +164,8 @@ public class ShootingGalleryActivity extends AppCompatActivity implements GLSurf
     SharedPreferences preferences = getSharedPreferences("StarPower", MODE_PRIVATE);
     if (preferences.contains("blaster"))
     {
-      switch (preferences.getString("blaster", ""))
-      {
-        case "gun":
-          blaster.setImageResource(R.drawable.gun);
-          break;
-        case "gun2":
-          blaster.setImageResource(R.drawable.gun2);
-          break;
-        case "gun3":
-          blaster.setImageResource(R.drawable.gun3);
-          break;
-        case "gun4":
-          blaster.setImageResource(R.drawable.gun4);
-          break;
-      }
+      int blasterImg = preferences.getInt("blaster", 0);
+      blaster.setImageResource(blasterImg);
     } else    // in case they dont have the pref file
     {
       blaster.setImageResource(R.drawable.gun);
@@ -536,7 +523,8 @@ public class ShootingGalleryActivity extends AppCompatActivity implements GLSurf
 
                 // assign color to the targets
                 float[] objColor;
-//                switch(getIntent().getStringExtra("color"))
+
+//                switch()
 //                {
 //                  case "red":
 //                    objColor = RED;

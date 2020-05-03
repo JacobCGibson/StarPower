@@ -66,7 +66,7 @@ public class OwnedMenuActivity extends Activity implements View.OnClickListener{
                 Integer imageRef = selectedItem.getImage();
                 SharedPreferences preferences = getSharedPreferences("StarPower",MODE_PRIVATE);
                 SharedPreferences.Editor editor = preferences.edit();
-                editor.putString("blaster", imageRef.toString());
+                editor.putInt("blaster", imageRef);
                 //editor.commit();
                 editor.apply();
 
