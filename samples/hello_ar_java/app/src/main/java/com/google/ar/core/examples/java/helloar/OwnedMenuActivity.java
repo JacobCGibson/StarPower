@@ -61,10 +61,29 @@ public class OwnedMenuActivity extends Activity implements View.OnClickListener{
                 Customization data= dataModel.get(position);
 
                 Customization selectedItem = (Customization) customizations.getItemAtPosition(position);
-                Integer imageRef = selectedItem.getImage();
                 SharedPreferences preferences = getSharedPreferences("StarPower",MODE_PRIVATE);
                 SharedPreferences.Editor editor = preferences.edit();
-                editor.putInt("blaster", imageRef);
+                if(selectedItem.getName().contains("Blaster"))
+                {
+                    Integer imageRef = selectedItem.getImage();
+                    editor.putInt("blaster", imageRef);
+                } else
+                {
+                    String color = "red";
+                    switch (selectedItem.getImage())
+                    {
+                        case (R.drawable.red_target):
+                            color = "red";
+                            break;
+                        case (R.drawable.blue_target):
+                            color = "blue";
+                            break;
+                        case (R.drawable.green_target):
+                            color = "green";
+                            break;
+                    }
+                    editor.putString("target", color);
+                }
                 //editor.commit();
                 editor.apply();
 

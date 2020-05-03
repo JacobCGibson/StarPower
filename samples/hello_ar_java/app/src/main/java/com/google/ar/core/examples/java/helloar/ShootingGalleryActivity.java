@@ -523,23 +523,33 @@ public class ShootingGalleryActivity extends AppCompatActivity implements GLSurf
 
                 // assign color to the targets
                 float[] objColor;
-
-//                switch()
-//                {
-//                  case "red":
-//                    objColor = RED;
-//                    break;
-//                  case "blue":
-//                    objColor = BLUE;
-//                    break;
-//                  case "green":
-//                    objColor = GREEN;
-//                    break;
-//                  default:
-//                    objColor = RED;
-//                    break;
-//                }
-                objColor = RED;
+                String color;
+                SharedPreferences preferences = getSharedPreferences("StarPower", MODE_PRIVATE);
+                if (preferences.contains("target"))
+                {
+                  color = preferences.getString("target", "red");
+                } else    // in case they dont have the pref file
+                {
+                  color = "red";
+                  SharedPreferences.Editor editor = preferences.edit();
+                  editor.putString("target", "red");
+                  editor.apply();
+                }
+                switch(color)
+                {
+                  case "red":
+                    objColor = RED;
+                    break;
+                  case "blue":
+                    objColor = BLUE;
+                    break;
+                  case "green":
+                    objColor = GREEN;
+                    break;
+                  default:
+                    objColor = RED;
+                    break;
+                }
 
                 // Adding an Anchor tells ARCore that it should track this position in
                 // space. This anchor is created on the Plane to place the 3D model
