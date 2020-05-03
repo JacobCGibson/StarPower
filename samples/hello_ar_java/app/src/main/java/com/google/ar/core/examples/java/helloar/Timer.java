@@ -37,4 +37,6 @@ public class Timer {
     public long getTimeLeft(){return timeLeftinMilliseconds;}
 
     public long getTimerDuration() {return timerDuration;}
+    
+    public void setTimerDuration(int duration){timerDuration = duration;}
 }
