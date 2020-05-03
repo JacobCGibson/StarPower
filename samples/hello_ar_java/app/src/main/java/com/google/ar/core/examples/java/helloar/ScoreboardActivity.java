@@ -56,15 +56,15 @@ public class ScoreboardActivity extends Activity implements View.OnClickListener
 
         //Extract the data…
         String scoreString = getIntent().getStringExtra("SCORE");
-        String time = getIntent().getStringExtra("TIME");
+        int time = getIntent().getIntExtra("time", 50);
         String targets = getIntent().getStringExtra("NUMTARGETS");
 
-        scoreText.setText(scoreString);
+        scoreText.setText(scoreString + " points");
         timeText.setText(time + " seconds");
         targetsText.setText(targets + " targets");
         mainMenuButton.setOnClickListener(this);
 
-        int score = Integer.parseInt(scoreString);
+        int scoreInt = Integer.parseInt(scoreString);
 
         runQuery(db);
 
@@ -77,7 +77,7 @@ public class ScoreboardActivity extends Activity implements View.OnClickListener
             values.put(ScoreboardAttr.ScoreboardEntry.COLUMN_TIME, time);
 
             //score
-            values.put(ScoreboardAttr.ScoreboardEntry.COLUMN_SCORE, score);
+            values.put(ScoreboardAttr.ScoreboardEntry.COLUMN_SCORE, scoreInt);
 
             //initials
             values.put(ScoreboardAttr.ScoreboardEntry.COLUMN_INITIALS, initials.getText().toString());
@@ -126,6 +126,7 @@ public class ScoreboardActivity extends Activity implements View.OnClickListener
             case R.id.mainMenuButton:
                 Intent menuIntent = new Intent(getApplicationContext(), MainMenuActivity.class);
                 menuIntent.putExtra("volume", getIntent().getIntExtra("volume", 50));
+                menuIntent.putExtra("time", getIntent().getIntExtra("time", 50));
                 startActivity(menuIntent);
                 break;
         }
