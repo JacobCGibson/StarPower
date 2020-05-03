@@ -70,6 +70,9 @@ public class OwnedMenuActivity extends Activity implements View.OnClickListener{
                 //editor.commit();
                 editor.apply();
 
+                Toast.makeText(OwnedMenuActivity.this, (String)selectedItem.getName() + " selected",
+                        Toast.LENGTH_SHORT).show();
+
             }
 
         });
