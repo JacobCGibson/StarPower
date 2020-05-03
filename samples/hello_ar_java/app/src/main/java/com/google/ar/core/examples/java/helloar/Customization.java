@@ -1,16 +1,20 @@
 package com.google.ar.core.examples.java.helloar;
 
 
+import android.graphics.drawable.Drawable;
+
 public class Customization {
-    private Boolean active;
+    private String name;
+    private Integer image;
 
     //constructor
-    public Customization() {
-       active = false;
+    public Customization(String custName, Integer custImage) {
+        name = custName;
+        image = custImage;
     }
 
-    public Boolean isActive(){
-        return active;
-    }
+    public String getName() {return name;}
+
+    public Integer getImage() { return image; }
 
 }

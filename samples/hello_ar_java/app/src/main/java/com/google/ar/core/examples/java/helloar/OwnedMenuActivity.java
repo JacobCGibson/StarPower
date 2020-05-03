@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -20,7 +21,8 @@ public class OwnedMenuActivity extends Activity implements View.OnClickListener{
 
     Button menu, shop;
     ListView customizations;
-    ArrayList<String> list;
+    ArrayList<Customization> dataModel;
+    private static CustomAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,17 @@ public class OwnedMenuActivity extends Activity implements View.OnClickListener{
         menu.setOnClickListener(this);
         shop.setOnClickListener(this);
 
+        dataModel= new ArrayList<>();
+
+        dataModel.add(new Customization("Red", R.drawable.gun));
+        dataModel.add(new Customization("Blue", R.drawable.gun2));
+        dataModel.add(new Customization("Gold", R.drawable.gun3));
+        dataModel.add(new Customization("Silver", R.drawable.gun4));
+
+        adapter= new CustomAdapter(dataModel,getApplicationContext());
+
+        customizations.setAdapter(adapter);
+
         TextView emptyView = (TextView) findViewById(android.R.id.empty);
         customizations.setEmptyView(emptyView);
 
@@ -41,15 +54,19 @@ public class OwnedMenuActivity extends Activity implements View.OnClickListener{
         customizations.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String selectedItem = (String) customizations.getItemAtPosition(position);
-                SharedPreferences preferences = getSharedPreferences("StarPower",MODE_PRIVATE);
-                SharedPreferences.Editor editor = preferences.edit();
-                editor.putString("blaster", selectedItem);
+
+                Customization data= dataModel.get(position);
+
+                //Snackbar.make(view, data.getName(), Snackbar.LENGTH_LONG)
+                        //.setAction("No action", null).show();
+
+                //String selectedItem = (String) customizations.getItemAtPosition(position);
+                //SharedPreferences preferences = getSharedPreferences("StarPower",MODE_PRIVATE);
+                //SharedPreferences.Editor editor = preferences.edit();
+                //editor.putString("blaster", selectedItem);
                 // editor.commit();
-                editor.apply();
+                //editor.apply();
             }
-
-
 
         });
 
