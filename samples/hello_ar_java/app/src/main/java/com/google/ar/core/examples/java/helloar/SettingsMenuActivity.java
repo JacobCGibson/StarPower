@@ -2,17 +2,19 @@ package com.google.ar.core.examples.java.helloar;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.SeekBar;
 
 public class SettingsMenuActivity extends Activity implements View.OnClickListener, SeekBar.OnSeekBarChangeListener{
 
-    Button menu, restore;
+    Button menu;
     SeekBar volume;
-    private final static int MAX_VOLUME = 100;
+    EditText timer;
+    private final int maxVolume = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,15 +23,13 @@ public class SettingsMenuActivity extends Activity implements View.OnClickListen
         setContentView(R.layout.activity_settings_menu);
 
         menu = (Button) findViewById(R.id.buttonMenu);
-        restore = (Button) findViewById(R.id.button);
         volume = (SeekBar) findViewById(R.id.seekVolume);
-        volume.setProgress(getIntent().getIntExtra("volume", MAX_VOLUME/2));
-        volume.setMax(MAX_VOLUME);
+        volume.setProgress(getIntent().getIntExtra("volume", maxVolume/2));
+        volume.setMax(maxVolume);
+        timer = (EditText) findViewById(R.id.timerDuration);
 
         menu.setOnClickListener(this);
-        restore.setOnClickListener(this);
         volume.setOnSeekBarChangeListener(this);
-
     }
 
     @Override
@@ -38,10 +38,8 @@ public class SettingsMenuActivity extends Activity implements View.OnClickListen
             case R.id.buttonMenu:
                 Intent mainIntent = new Intent(getApplicationContext(), MainMenuActivity.class);
                 mainIntent.putExtra("volume", volume.getProgress());
+                mainIntent.putExtra("time", Integer.parseInt(timer.getText().toString()));
                 startActivity(mainIntent);
-                break;
-            case R.id.button:
-                //restore purchases code here
                 break;
         }
     }
