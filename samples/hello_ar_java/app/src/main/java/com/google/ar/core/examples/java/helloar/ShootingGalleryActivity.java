@@ -185,6 +185,10 @@ public class ShootingGalleryActivity extends AppCompatActivity implements GLSurf
     seekVol = getIntent().getIntExtra("volume", 50);
     volume = (float) (1 - (Math.log(MAX_VOLUME - seekVol) / Math.log(MAX_VOLUME)));
     laserSound.setVolume(volume, volume);
+    
+    //timer
+    int time = getIntent().getIntExtra("time", 50);
+    timer.setTimerDuration(time);
 
     // Set up renderer.
     surfaceView.setPreserveEGLContextOnPause(true);
