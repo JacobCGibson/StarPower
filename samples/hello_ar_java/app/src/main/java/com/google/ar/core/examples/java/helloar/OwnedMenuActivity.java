@@ -66,8 +66,6 @@ public class OwnedMenuActivity extends Activity implements View.OnClickListener{
                 //editor.commit();
                 editor.apply();
 
-                Toast
-
             }
 
         });
