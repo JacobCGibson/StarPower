@@ -24,6 +24,7 @@ import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -91,7 +92,11 @@ public class ShootingGalleryActivity extends AppCompatActivity implements GLSurf
 
   // Temporary matrix allocated here to reduce number of allocations for each frame.
   private final float[] anchorMatrix = new float[16];
-  private static final float[] DEFAULT_COLOR = new float[]{225f, 0f, 0f, 255f};
+
+  // colors
+  private static final float[] RED = new float[]{225f, 0f, 0f, 255f};
+  private static final float[] GREEN = new float[]{0f, 255f, 0f, 255f};
+  private static final float[] BLUE = new float[]{0f, 0f, 255f, 255f};
 
   private static final String SEARCHING_PLANE_MESSAGE = "Searching for surfaces...";
 
@@ -529,9 +534,23 @@ public class ShootingGalleryActivity extends AppCompatActivity implements GLSurf
                   isVisible.remove(0);
                 }
 
-                // assign red color to the targets
+                // assign color to the targets
                 float[] objColor;
-                objColor = DEFAULT_COLOR;
+                switch(getIntent().getStringExtra("color"))
+                {
+                  case "red":
+                    objColor = RED;
+                    break;
+                  case "blue":
+                    objColor = BLUE;
+                    break;
+                  case "green":
+                    objColor = GREEN;
+                    break;
+                  default:
+                    objColor = RED;
+                    break;
+                }
 
                 // Adding an Anchor tells ARCore that it should track this position in
                 // space. This anchor is created on the Plane to place the 3D model
@@ -554,7 +573,11 @@ public class ShootingGalleryActivity extends AppCompatActivity implements GLSurf
           laserSound.start();
 
           // set tap to middle of screen
-          tap.setLocation(500, 1000);
+          DisplayMetrics displayMetrics = new DisplayMetrics();
+          getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+          int height = displayMetrics.heightPixels;
+          int width = displayMetrics.widthPixels;
+          tap.setLocation(width/2, height/2);
 
           for (HitResult hit : frame.hitTest(tap)) {
             // hit detection

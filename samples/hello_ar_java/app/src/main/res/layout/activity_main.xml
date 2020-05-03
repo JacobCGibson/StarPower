@@ -41,10 +41,7 @@
       android:id="@+id/imageReticle"
       android:layout_width="114dp"
       android:layout_height="75dp"
-      android:layout_alignParentEnd="true"
-      android:layout_alignParentBottom="true"
-      android:layout_marginEnd="148dp"
-      android:layout_marginBottom="330dp"
+      android:layout_centerInParent="true"
       android:contentDescription="blaster"
       app:srcCompat="@drawable/red_reticle" />
 
