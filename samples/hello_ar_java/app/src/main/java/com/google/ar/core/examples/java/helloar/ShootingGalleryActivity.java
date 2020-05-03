@@ -181,7 +181,17 @@ public class ShootingGalleryActivity extends AppCompatActivity implements GLSurf
     laserSound.setVolume(volume, volume);
     
     //timer
-    int time = getIntent().getIntExtra("time", 50);
+    int time = 60;
+    if (preferences.contains("time"))
+    {
+      time = getIntent().getIntExtra("time", 60);
+    } else    // in case they dont have the pref file
+    {
+      time = 60;
+      SharedPreferences.Editor editor = preferences.edit();
+      editor.putInt("time", 60);
+      editor.apply();
+    }
     timer.setTimerDuration(time);
 
     // Set up renderer.
