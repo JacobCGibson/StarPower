@@ -70,7 +70,7 @@
     <string name="return_button">Main Menu</string>
 
     // 5. Owned Customizations
-    <string name="owned_label">Owned Customizations</string>
+    <string name="owned_label">Customizations</string>
     <string name="o_menu_button">Menu</string>
     <string name="o_shop_button">Shop</string>
     <string name="custom_label">Placeholder Custom</string>
