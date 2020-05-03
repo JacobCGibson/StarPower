@@ -9,37 +9,48 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/space_font_ttf"
+            android:width="75dp"
+            android:height="50dp"
             android:text="Empty File"
             android:padding="10dp"
-            android:textColor="#0022ff"
+            android:textSize="17dp"
+            android:textColor="@android:color/white"
             android:id="@+id/highInitials" />
+
+        <TextView
+            android:id="@+id/highScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:width="75dp"
+            android:height="50dp"
+            android:fontFamily="@font/space_font_ttf"
+            android:padding="10dp"
+            android:textSize="17dp"
+            android:text="Empty File"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:id="@+id/highTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:width="75dp"
+            android:height="50dp"
+            android:fontFamily="@font/space_font_ttf"
+            android:padding="10dp"
+            android:text="Empty File"
+            android:textColor="@android:color/white"
+            android:textSize="17dp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:width="75dp"
+            android:height="50dp"
             android:fontFamily="@font/space_font_ttf"
             android:text="Empty File"
-            android:padding="1dp"
-            android:textColor="#0022ff"
-            android:id="@+id/highScore" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/space_font_ttf"
-
-            android:text="Empty File"
-            android:paddingLeft="20dp"
-            android:textColor="#0022ff"
-            android:id="@+id/highTime" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/space_font_ttf"
-
-            android:text="Empty File"
-            android:paddingLeft="20dp"
-            android:textColor="#0022ff"
-            android:id="@+id/numTargets" />
+            android:padding="10dp"
+            android:textColor="@android:color/white"
+            android:id="@+id/numTargets"
+            android:textSize="17dp"/>
     </LinearLayout>
 </LinearLayout>
