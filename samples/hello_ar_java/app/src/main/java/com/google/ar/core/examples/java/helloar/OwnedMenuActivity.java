@@ -34,13 +34,6 @@ public class OwnedMenuActivity extends Activity implements View.OnClickListener{
         menu.setOnClickListener(this);
         shop.setOnClickListener(this);
 
-        //create the array adapter
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(), R.layout.row_item, R.id.listView, list);
-
-        //set the list to the adapter
-        final ListView listView = (ListView) findViewById(android.R.id.list);
-        customizations.setAdapter(adapter);
-
         TextView emptyView = (TextView) findViewById(android.R.id.empty);
         customizations.setEmptyView(emptyView);
 
