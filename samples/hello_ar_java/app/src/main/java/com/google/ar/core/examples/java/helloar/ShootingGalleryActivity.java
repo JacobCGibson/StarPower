@@ -98,6 +98,8 @@ public class ShootingGalleryActivity extends AppCompatActivity implements GLSurf
   // score
   private Score m_Score = new Score();
 
+  private float hitRange = 0.25f;    // radius of the target - size of hitbox
+
   // Anchors created from taps used for object placing with a given color.
   private static class ColoredAnchor {
     public final Anchor anchor;
@@ -390,10 +392,13 @@ public class ShootingGalleryActivity extends AppCompatActivity implements GLSurf
 
       // Visualize tracked points.
       // Use try-with-resources to automatically release the point cloud.
+    if (currMode != Mode.SHOOTING){
       try (PointCloud pointCloud = frame.acquirePointCloud()) {
         pointCloudRenderer.update(pointCloud);
         pointCloudRenderer.draw(viewmtx, projmtx);
       }
+    }
+
 
       // No tracking error at this point. If we detected any plane, then hide the
       // message UI, otherwise show searchingPlane message.
@@ -489,32 +494,51 @@ public class ShootingGalleryActivity extends AppCompatActivity implements GLSurf
           for (HitResult hit : frame.hitTest(tap)) {
             // Check if any plane was hit, and if it was hit inside the plane polygon
             Trackable trackable = hit.getTrackable();
-            // Creates an anchor if a plane or an oriented point was hit.
-            if ((trackable instanceof Plane
-                    && ((Plane) trackable).isPoseInPolygon(hit.getHitPose())
-                    && (PlaneRenderer.calculateDistanceToPlane(hit.getHitPose(), camera.getPose()) > 0))
-                    || (trackable instanceof Point
-                    && ((Point) trackable).getOrientationMode()
-                    == OrientationMode.ESTIMATED_SURFACE_NORMAL)) {
-              // Hits are sorted by depth. Consider only closest hit on a plane or oriented point.
-              // Cap the number of objects created. This avoids overloading both the
-              // rendering system and ARCore.
-              if (anchors.size() >= 20) {
-                anchors.get(0).anchor.detach();
-                anchors.remove(0);
-                isVisible.remove(0);
+            // hit detection
+            float[] hitSpot = hit.getHitPose().getTranslation();
+            // check all targets to see if there is one already where the user tapped
+            boolean isHit = false;
+            for (ColoredAnchor ca : anchors) {
+              if (isVisible.get(anchors.indexOf(ca))) {
+                float[] target = ca.anchor.getPose().getTranslation();
+                // if user hit a target
+                if (Math.abs(hitSpot[0] - target[0]) < hitRange
+                        && Math.abs(hitSpot[1] - target[1]) < hitRange
+                        && Math.abs(hitSpot[2] - target[2]) < hitRange) {
+                  isHit = true;
+                  break;  //we found one so we can break out of the loop
+                }
               }
+            }
+            // if there's not a target there then make one
+            if (!isHit)
+            {
+              // Creates an anchor if a plane or an oriented point was hit.
+              if ((trackable instanceof Plane
+                      && ((Plane) trackable).isPoseInPolygon(hit.getHitPose())
+                      && (PlaneRenderer.calculateDistanceToPlane(hit.getHitPose(), camera.getPose()) > 0))
+                      || (trackable instanceof Point
+                      && ((Point) trackable).getOrientationMode()
+                      == OrientationMode.ESTIMATED_SURFACE_NORMAL)) {
+                // Hits are sorted by depth. Consider only closest hit on a plane or oriented point.
+                // Cap the number of objects created. This avoids overloading both the
+                // rendering system and ARCore.
+                if (anchors.size() >= 20) {
+                  anchors.get(0).anchor.detach();
+                  anchors.remove(0);
+                  isVisible.remove(0);
+                }
 
-              // assign red color to the targets
-              float[] objColor;
-              objColor = DEFAULT_COLOR;
+                // assign red color to the targets
+                float[] objColor;
+                objColor = DEFAULT_COLOR;
 
-              // Adding an Anchor tells ARCore that it should track this position in
-              // space. This anchor is created on the Plane to place the 3D model
-              // in the correct position relative both to the world and to the plane.
-              anchors.add(new ColoredAnchor(hit.createAnchor(), objColor));
-              isVisible.add(true);
-              break;
+                // Adding an Anchor tells ARCore that it should track this position in
+                // space. This anchor is created on the Plane to place the 3D model
+                // in the correct position relative both to the world and to the plane.
+                anchors.add(new ColoredAnchor(hit.createAnchor(), objColor));
+                isVisible.add(true);
+              }
             }
           }
         }
@@ -530,10 +554,7 @@ public class ShootingGalleryActivity extends AppCompatActivity implements GLSurf
 
           for (HitResult hit : frame.hitTest(tap)) {
             // hit detection
-            float hitRange = 0.2f;    // radius of the target - size of hitbox
-
             float[] hitSpot = hit.getHitPose().getTranslation();
-            boolean isHit = false;
             // check all targets
             for (ColoredAnchor ca : anchors) {
               if (isVisible.get(anchors.indexOf(ca)))
@@ -543,7 +564,6 @@ public class ShootingGalleryActivity extends AppCompatActivity implements GLSurf
                 if (Math.abs(hitSpot[0] - target[0]) < hitRange
                         && Math.abs(hitSpot[1] - target[1]) < hitRange
                         && Math.abs(hitSpot[2] - target[2]) < hitRange) {
-                  isHit = true;
 
                   // also need to set target to invisible
                   isVisible.set(anchors.indexOf(ca), false);
@@ -553,21 +573,20 @@ public class ShootingGalleryActivity extends AppCompatActivity implements GLSurf
                     for(int ii=0; ii<isVisible.size(); ii++) isVisible.set(ii, true);
                     isVisible.set(anchors.indexOf(ca), false);
                   }
+
+                  // if target is hit add points and update display
+                  int adjustedPoints = (int)(hit.getDistance()*100);
+                  m_Score.addPoints(adjustedPoints);
+                  points.setText(String.valueOf(m_Score.getPoints()));
+                  points.invalidate();  //need to force android to update points before continuing
+                  points.requestLayout();
+                  break; // we have a hit so we don't need to check other targets
                 }
-                if (isHit) break;  // we have a hit so we don't need to check other targets
               }
-            }
-            // if target is hit add points and update display
-            if (isHit) {
-              int adjustedPoints = (int)(hit.getDistance()*100);
-              m_Score.addPoints(adjustedPoints);
-              points.setText(String.valueOf(m_Score.getPoints()));
-              points.invalidate();  //need to force android to update points before continuing
-              points.requestLayout();
             }
           }
         }
-        break;
+      break;
     }
   }
 

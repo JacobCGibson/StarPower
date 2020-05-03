@@ -18,7 +18,7 @@ public class ScoreboardDB extends SQLiteOpenHelper{
 
     //deletion statement
     private static final String SQL_DELETE =
-            "DROP TABLE IF EXISTS" + ScoreboardAttr.ScoreboardEntry.TABLE_NAME;
+            "DROP TABLE IF EXISTS " + ScoreboardAttr.ScoreboardEntry.TABLE_NAME;
 
     public ScoreboardDB(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
