@@ -536,21 +536,22 @@ public class ShootingGalleryActivity extends AppCompatActivity implements GLSurf
 
                 // assign color to the targets
                 float[] objColor;
-                switch(getIntent().getStringExtra("color"))
-                {
-                  case "red":
-                    objColor = RED;
-                    break;
-                  case "blue":
-                    objColor = BLUE;
-                    break;
-                  case "green":
-                    objColor = GREEN;
-                    break;
-                  default:
-                    objColor = RED;
-                    break;
-                }
+//                switch(getIntent().getStringExtra("color"))
+//                {
+//                  case "red":
+//                    objColor = RED;
+//                    break;
+//                  case "blue":
+//                    objColor = BLUE;
+//                    break;
+//                  case "green":
+//                    objColor = GREEN;
+//                    break;
+//                  default:
+//                    objColor = RED;
+//                    break;
+//                }
+                objColor = RED;
 
                 // Adding an Anchor tells ARCore that it should track this position in
                 // space. This anchor is created on the Plane to place the 3D model
