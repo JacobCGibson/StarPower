@@ -4,22 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".OwnedMenuActivity"
-    android:background="@drawable/settings_bg">
+    android:background="@drawable/settings_bg"
+    tools:context=".OwnedMenuActivity">
 
 
     <Button
         android:id="@+id/buttonMenu"
         android:layout_width="181dp"
         android:layout_height="48dp"
+        android:layout_marginBottom="52dp"
         android:fontFamily="@font/space_font_ttf"
         android:text="Menu"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textTitle"
@@ -40,27 +40,54 @@
         android:id="@+id/seekVolume"
         android:layout_width="252dp"
         android:layout_height="53dp"
-        android:layout_marginTop="22dp"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="114dp"
         android:layout_height="30dp"
+        android:layout_marginTop="164dp"
         android:fontFamily="@font/space_font_ttf"
         android:text="Volume"
         android:textColor="@android:color/white"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/buttonMenu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="175dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="164dp"
+        android:fontFamily="@font/space_font_ttf"
+        android:text="Session time"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonMenu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.485" />
+
+    <EditText
+        android:id="@+id/timerDuration"
+        android:layout_width="275dp"
+        android:layout_height="48dp"
+        android:hint="Enter Session Time in seconds"
+        android:inputType="phone"
+        app:layout_constraintBottom_toTopOf="@+id/buttonMenu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seekVolume"
+        app:layout_constraintVertical_bias="0.534" />
 
 </android.support.constraint.ConstraintLayout>
