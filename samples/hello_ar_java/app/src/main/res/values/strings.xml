@@ -55,8 +55,8 @@
     <string name="points_label">Points</string>
     <string name="time_label">Time</string>
 
-    <string name="place_toast">Place some targets!</string>
-    <string name="two_toast">Please place at least two targets</string>
+    <string name="place_toast">Tap to place targets!</string>
+    <string name="two_toast">Please place at least two targets.</string>
     <string name="shoot_toast">Shoot Em!</string>
 
     <string name="camera_toast">Camera permission is needed to run this application.</string>
