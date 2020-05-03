@@ -49,6 +49,7 @@ public class ScoreboardActivity extends Activity implements View.OnClickListener
 
         ScoreboardDB dbhelper = new ScoreboardDB(getApplicationContext());
         SQLiteDatabase db = dbhelper.getWritableDatabase();
+        //dbhelper.refreshScoreboard(db);
 
         //Get the bundle
         Bundle bundle = getIntent().getExtras();

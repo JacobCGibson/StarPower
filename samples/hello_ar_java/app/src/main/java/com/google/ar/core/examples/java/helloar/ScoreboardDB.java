@@ -12,7 +12,7 @@ public class ScoreboardDB extends SQLiteOpenHelper{
     private static final String SQL_CREATE_ENTRY = "CREATE TABLE " + ScoreboardAttr.ScoreboardEntry.TABLE_NAME + " (" +
             ScoreboardAttr.ScoreboardEntry._ID + " INTEGER PRIMARY KEY" + COMMA_SEPARATOR +
             ScoreboardAttr.ScoreboardEntry.COLUMN_TIME+" "+ TEXT_TYPE + COMMA_SEPARATOR +
-            ScoreboardAttr.ScoreboardEntry.COLUMN_SCORE+" "+ " INTEGER" + COMMA_SEPARATOR +
+            ScoreboardAttr.ScoreboardEntry.COLUMN_SCORE+" "+ "INTEGER" + COMMA_SEPARATOR +
             ScoreboardAttr.ScoreboardEntry.COLUMN_INITIALS+" "+ TEXT_TYPE + COMMA_SEPARATOR +
             ScoreboardAttr.ScoreboardEntry.COLUMN_TARGETS+" "+ TEXT_TYPE + ")";
 
@@ -30,11 +30,11 @@ public class ScoreboardDB extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(SQL_CREATE_ENTRY);
-
     }
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL(SQL_DELETE);
         onCreate(db);
     }
+    public void refreshScoreboard(SQLiteDatabase db) { db.execSQL(SQL_DELETE); db.execSQL(SQL_CREATE_ENTRY);}
 }
