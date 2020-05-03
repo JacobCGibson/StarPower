@@ -38,7 +38,8 @@ public class SettingsMenuActivity extends Activity implements View.OnClickListen
             case R.id.buttonMenu:
                 Intent mainIntent = new Intent(getApplicationContext(), MainMenuActivity.class);
                 mainIntent.putExtra("volume", volume.getProgress());
-                mainIntent.putExtra("time", Integer.parseInt(timer.getText().toString()));
+                if (timer.getText().toString().equals("")) mainIntent.putExtra("time", 50);
+                else mainIntent.putExtra("time", Integer.parseInt(timer.getText().toString()));
                 startActivity(mainIntent);
                 break;
         }
