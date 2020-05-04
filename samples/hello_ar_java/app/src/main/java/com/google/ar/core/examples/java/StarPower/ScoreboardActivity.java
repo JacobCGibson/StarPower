@@ -1,24 +1,18 @@
-package com.google.ar.core.examples.java.helloar;
+package com.google.ar.core.examples.java.StarPower;
 
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
-
-import org.w3c.dom.Text;
 
 public class ScoreboardActivity extends Activity implements View.OnClickListener {
     //define activity's interactive elements
