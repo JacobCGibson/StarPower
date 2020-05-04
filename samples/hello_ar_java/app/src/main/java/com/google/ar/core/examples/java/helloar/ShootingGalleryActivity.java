@@ -170,7 +170,7 @@ public class ShootingGalleryActivity extends AppCompatActivity implements GLSurf
     {
       blaster.setImageResource(R.drawable.gun);
       SharedPreferences.Editor editor = preferences.edit();
-      editor.putString("blaster", "gun");
+      editor.putInt("blaster", R.drawable.gun);
       editor.apply();
     }
 
