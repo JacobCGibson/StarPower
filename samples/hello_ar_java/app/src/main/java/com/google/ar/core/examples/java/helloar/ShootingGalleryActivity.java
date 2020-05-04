@@ -164,7 +164,7 @@ public class ShootingGalleryActivity extends AppCompatActivity implements GLSurf
     SharedPreferences preferences = getSharedPreferences("StarPower", MODE_PRIVATE);
     if (preferences.contains("blaster"))
     {
-      int blasterImg = preferences.getInt("blaster", 0);
+      int blasterImg = preferences.getInt("blaster", R.drawable.gun);
       blaster.setImageResource(blasterImg);
     } else    // in case they dont have the pref file
     {
