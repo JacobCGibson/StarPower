@@ -1,3 +1,65 @@
 <resources>
-    <dimen name="fab_margin">16dp</dimen>
+    //text sizes
+    <dimen name="text_size">20sp</dimen>
+    <dimen name="play_text_size">30sp</dimen>
+    <dimen name="cust_text_size">35sp</dimen>
+    <dimen name="high_score_size">36sp</dimen>
+    <dimen name="settings_text_size">35sp</dimen>
+    <dimen name="row_item_text_size">17dp</dimen>
+
+    // Shooting Gallery
+    <dimen name="blaster_width">264dp</dimen>
+    <dimen name="blaster_height">211dp</dimen>
+    <dimen name="blaster_end_margin">-30dp</dimen>
+    <dimen name="blaster_bottom_margin">-67dp</dimen>
+    <dimen name="land_blaster_end">-7dp</dimen>
+    <dimen name="land_blaster_bottom">-85dp</dimen>
+    <dimen name="reticle_width">114dp</dimen>
+    <dimen name="reticle_height">75dp</dimen>
+    <dimen name="shoot_button_margin">10dp</dimen>
+    <dimen name="label_width">152dp</dimen>
+    <dimen name="label_margin_top">10dp</dimen>
+    <dimen name="points_margin_right">145dp</dimen>
+    <dimen name="land_points_left">65dp</dimen>
+    <dimen name="land_points_right">357dp</dimen>
+    <dimen name="land_time_left">262dp</dimen>
+    <dimen name="land_time_right">210dp</dimen>
+    <dimen name="land_translate_z">10dp</dimen>
+
+    // Main Menu
+    <dimen name="logo_width">367dp</dimen>
+    <dimen name="logo_height">235dp</dimen>
+    <dimen name="logo_margin_top">84dp</dimen>
+
+    // Customization Menu
+    <dimen name="menu_button_width">160dp</dimen>
+    <dimen name="menu_button_height">48dp</dimen>
+    <dimen name="cust_margin_top">16dp</dimen>
+    <dimen name="land_list_width">636dp</dimen>
+    <dimen name="land_list_height">211dp</dimen>
+
+    // Scoreboard
+    <dimen name="score_list_width">328dp</dimen>
+    <dimen name="score_list_height">202dp</dimen>
+    <dimen name="score_label_margin_top">32dp</dimen>
+    <dimen name="land_score_label_margin_top">24dp</dimen>
+    <dimen name="land_score_label_margin_start">120dp</dimen>
+    <dimen name="clear_button_margin_top">40dp</dimen>
+    <dimen name="menu_button_margin_top">12dp</dimen>
+    <dimen name="user_label_margin_top">32dp</dimen>
+    <dimen name="user_label_width">110dp</dimen>
+    <dimen name="score_text_width">85dp</dimen>
+    <dimen name="score_text_height">25dp</dimen>
+
+    // Settings
+    <dimen name="settings_menu_margin_bottom">52dp</dimen>
+    <dimen name="seek_width">252dp</dimen>
+    <dimen name="seek_height">53dp</dimen>
+    <dimen name="seek_margin_top">20dp</dimen>
+    <dimen name="volume_margin_top">164dp</dimen>
+    <dimen name="session_margin_top">164dp</dimen>
+    <dimen name="duration_width">275dp</dimen>
+    <dimen name="duration_height">48dp</dimen>
+    <dimen name="land_volume_margin_top">96dp</dimen>
+    <dimen name="land_session_margin_top">124dp</dimen>
 </resources>

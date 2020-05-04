@@ -11,9 +11,9 @@
             android:fontFamily="@font/space_font_ttf"
             android:width="75dp"
             android:height="50dp"
-            android:text="Empty File"
+            android:text=""
             android:padding="10dp"
-            android:textSize="17dp"
+            android:textSize="@dimen/row_item_text_size"
             android:textColor="@android:color/white"
             android:id="@+id/highInitials" />
 
@@ -25,8 +25,8 @@
             android:height="50dp"
             android:fontFamily="@font/space_font_ttf"
             android:padding="10dp"
-            android:textSize="17dp"
-            android:text="Empty File"
+            android:textSize="@dimen/row_item_text_size"
+            android:text=""
             android:textColor="@android:color/white" />
 
         <TextView
@@ -37,9 +37,9 @@
             android:height="50dp"
             android:fontFamily="@font/space_font_ttf"
             android:padding="10dp"
-            android:text="Empty File"
+            android:text=""
             android:textColor="@android:color/white"
-            android:textSize="17dp" />
+            android:textSize="@dimen/row_item_text_size" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -47,10 +47,10 @@
             android:width="75dp"
             android:height="50dp"
             android:fontFamily="@font/space_font_ttf"
-            android:text="Empty File"
+            android:text=""
             android:padding="10dp"
             android:textColor="@android:color/white"
             android:id="@+id/numTargets"
-            android:textSize="17dp"/>
+            android:textSize="@dimen/row_item_text_size"/>
     </LinearLayout>
 </LinearLayout>

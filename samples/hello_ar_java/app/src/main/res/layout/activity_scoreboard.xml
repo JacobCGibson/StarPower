@@ -11,12 +11,12 @@
         android:id="@+id/scoreTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="@dimen/score_label_margin_top"
         android:fontFamily="@font/space_font_ttf"
-        android:text="HIGH SCORES"
+        android:text="@string/high_label"
         android:textAllCaps="true"
         android:textColor="@android:color/white"
-        android:textSize="36sp"
+        android:textSize="@dimen/high_score_size"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,67 +24,68 @@
 
     <ListView
         android:id="@+id/list"
-        android:layout_width="328dp"
-        android:layout_height="202dp"
+        android:layout_width="@dimen/score_list_width"
+        android:layout_height="@dimen/score_list_height"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView4" />
+        app:layout_constraintTop_toBottomOf="@id/scoreLabel" />
 
     <TextView
         android:id="@android:id/empty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="NO DATA"
+        android:text=""
         android:textColor="@android:color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/initialsLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="@dimen/score_label_margin_top"
         android:fontFamily="@font/space_font_ttf"
-        android:text="Initials"
+        android:text="@string/initials"
         android:textColor="@android:color/white"
-        app:layout_constraintEnd_toStartOf="@+id/textView4"
+        app:layout_constraintEnd_toStartOf="@+id/scoreLabel"
         app:layout_constraintHorizontal_bias="0.636"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scoreTitle" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/scoreLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="@dimen/score_label_margin_top"
         android:fontFamily="@font/space_font_ttf"
-        android:text="Score"
+        android:text="@string/score"
         android:textColor="@android:color/white"
-        app:layout_constraintEnd_toStartOf="@+id/textView5"
+        app:layout_constraintEnd_toStartOf="@+id/timeLabel"
         app:layout_constraintHorizontal_bias="0.849"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scoreTitle" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/timeLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="@dimen/score_label_margin_top"
         android:fontFamily="@font/space_font_ttf"
-        android:text="Time"
+        android:text="@string/time"
         android:textColor="@android:color/white"
-        app:layout_constraintEnd_toStartOf="@+id/textView6"
+        app:layout_constraintEnd_toStartOf="@+id/targetsLabel"
         app:layout_constraintHorizontal_bias="0.867"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scoreTitle" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/targetsLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="@dimen/score_label_margin_top"
         android:fontFamily="@font/space_font_ttf"
-        android:text="Targets"
+        android:text="@string/targets"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.718"
@@ -95,9 +96,9 @@
         android:id="@+id/initials"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="@dimen/score_label_margin_top"
         android:fontFamily="@font/space_font_ttf"
-        android:hint="Enter initials"
+        android:hint="@string/initial_label"
         android:inputType="text"
         android:maxLength="3"
         app:layout_constraintEnd_toEndOf="parent"
@@ -109,10 +110,9 @@
         android:id="@+id/clear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="@dimen/clear_button_margin_top"
         android:fontFamily="@font/space_font_ttf"
-        android:padding="5dp"
-        android:text="Clear Scoreboard"
+        android:text="@string/clear_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/targets" />
@@ -122,32 +122,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/space_font_ttf"
-        android:padding="5dp"
-        android:text="Save Score"
+        android:text="@string/save_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.839"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/initials" />
 
-    <TextView
-        android:id="@+id/score"
-        android:layout_width="85dp"
-        android:layout_height="25dp"
-        android:layout_marginTop="12dp"
-        android:textAlignment="center"
-        android:textColor="@android:color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
-        app:layout_constraintStart_toStartOf="@+id/targetsText"
-        app:layout_constraintTop_toBottomOf="@id/list" />
-
     <Button
         android:id="@+id/mainMenuButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="@dimen/menu_button_margin_top"
         android:fontFamily="@font/space_font_ttf"
-        android:text="Main Menu"
+        android:text="@string/return_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
@@ -157,10 +144,10 @@
         android:id="@+id/timeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:width="110dp"
+        android:layout_marginTop="@dimen/user_label_margin_top"
+        android:width="@dimen/user_label_width"
         android:fontFamily="@font/space_font_ttf"
-        android:text="YOUR TIME"
+        android:text="@string/f_time_label"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toStartOf="@+id/time"
         app:layout_constraintHorizontal_bias="0.533"
@@ -168,13 +155,23 @@
         app:layout_constraintTop_toBottomOf="@+id/scoreText" />
 
     <TextView
+        android:id="@+id/time"
+        android:layout_width="@dimen/score_text_width"
+        android:layout_height="@dimen/score_text_height"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="@+id/timeText"
+        app:layout_constraintTop_toTopOf="@+id/timeText" />
+
+    <TextView
         android:id="@+id/targetsText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:width="110dp"
+        android:layout_marginTop="@dimen/user_label_margin_top"
+        android:width="@dimen/user_label_width"
         android:fontFamily="@font/space_font_ttf"
-        android:text="Num targets"
+        android:text="@string/targets"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toStartOf="@+id/targets"
         app:layout_constraintHorizontal_bias="0.533"
@@ -182,40 +179,39 @@
         app:layout_constraintTop_toBottomOf="@+id/timeText" />
 
     <TextView
-        android:id="@+id/time"
-        android:layout_width="85dp"
-        android:layout_height="25dp"
-        android:layout_marginTop="28dp"
-        android:textColor="@android:color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.401"
-        app:layout_constraintStart_toStartOf="@+id/scoreText"
-        app:layout_constraintTop_toBottomOf="@+id/score" />
-
-    <TextView
         android:id="@+id/targets"
-        android:layout_width="85dp"
-        android:layout_height="25dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="@dimen/score_text_width"
+        android:layout_height="@dimen/score_text_height"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.432"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/time" />
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="@id/targetsText"
+        app:layout_constraintTop_toTopOf="@+id/targetsText" />
 
     <TextView
         android:id="@+id/scoreText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:width="110dp"
+        android:layout_marginTop="@dimen/user_label_margin_top"
+        android:width="@dimen/user_label_width"
         android:fontFamily="@font/space_font_ttf"
-        android:text="YOUR SCORE"
+        android:text="@string/f_score_label"
         android:textColor="@android:color/white"
-        app:layout_constraintEnd_toStartOf="@+id/score"
+        app:layout_constraintEnd_toStartOf="@id/score"
         app:layout_constraintHorizontal_bias="0.533"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/score" />
+        app:layout_constraintTop_toBottomOf="@+id/list" />
+
+    <TextView
+        android:id="@+id/score"
+        android:layout_width="@dimen/score_text_width"
+        android:layout_height="@dimen/score_text_height"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="@+id/scoreText"
+        app:layout_constraintTop_toTopOf="@id/scoreText" />
 
 
 </android.support.constraint.ConstraintLayout>

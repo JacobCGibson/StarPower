@@ -28,21 +28,21 @@
 
   <ImageView
       android:id="@+id/imageBlaster"
-      android:layout_width="264dp"
-      android:layout_height="211dp"
+      android:layout_width="@dimen/blaster_width"
+      android:layout_height="@dimen/blaster_height"
       android:layout_alignParentEnd="true"
       android:layout_alignParentBottom="true"
-      android:layout_marginEnd="-30dp"
-      android:layout_marginBottom="-67dp"
-      android:contentDescription="blaster"
+      android:layout_marginEnd="@dimen/blaster_end_margin"
+      android:layout_marginBottom="@dimen/blaster_bottom_margin"
+      android:contentDescription="@string/blaster"
       app:srcCompat="@drawable/gun" />
 
   <ImageView
       android:id="@+id/imageReticle"
-      android:layout_width="114dp"
-      android:layout_height="75dp"
+      android:layout_width="@dimen/reticle_width"
+      android:layout_height="@dimen/reticle_height"
       android:layout_centerInParent="true"
-      android:contentDescription="blaster"
+      android:contentDescription="@string/reticle"
       app:srcCompat="@drawable/red_reticle" />
 
   <Button
@@ -52,37 +52,34 @@
       android:layout_height="wrap_content"
       android:layout_alignParentStart="true"
       android:layout_alignParentTop="true"
-      android:layout_marginStart="10dp"
-      android:layout_marginTop="10dp"
+      android:layout_marginStart="@dimen/shoot_button_margin"
+      android:layout_marginTop="@dimen/shoot_button_margin"
       android:text="@string/scanning_button" />
 
   <TextView
       android:fontFamily = "@font/space_font_ttf"
       android:id="@+id/pointsView"
-      android:layout_width="152dp"
+      android:layout_width="@dimen/label_width"
       android:layout_height="wrap_content"
       android:layout_alignParentTop="true"
-      android:layout_alignParentRight="true"
-      android:layout_marginTop="10dp"
-      android:layout_marginRight="145dp"
-      android:width="200dp"
+      android:layout_alignParentEnd="true"
+      android:layout_marginTop="@dimen/label_margin_top"
+      android:layout_marginEnd="@dimen/points_margin_right"
       android:text="@string/points_label"
       android:textAlignment="textStart"
-      android:textSize="20sp" />
+      android:textSize="@dimen/text_size" />
 
   <TextView
       android:fontFamily = "@font/space_font_ttf"
       android:id="@+id/timeView"
-      android:layout_width="152dp"
+      android:layout_width="@dimen/label_width"
       android:layout_height="wrap_content"
       android:layout_alignParentTop="true"
-      android:layout_alignParentRight="true"
-      android:layout_marginTop="10dp"
-      android:layout_marginRight="-1dp"
-      android:width="150dp"
+      android:layout_alignParentEnd="true"
+      android:layout_marginTop="@dimen/label_margin_top"
       android:text="@string/time_label"
       android:textAlignment="textStart"
-      android:textSize="20sp" />
+      android:textSize="@dimen/text_size" />
 
 </RelativeLayout>
 

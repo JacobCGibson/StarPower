@@ -42,18 +42,23 @@
     <string name="play_button">Play</string>
     <string name="customize_button">Customize</string>
     <string name="settings_button">Settings</string>
+    <string name="logo">Logo</string>
 
     // 2. Settings
     <string name="menu_button">Menu</string>
     <string name="settings_label">Settings</string>
     <string name="volume_label">Volume</string>
+    <string name="session_label">Session Time</string>
+    <string name="duration_label">Enter Session Time in seconds</string>
     <string name="res_purch_button">Restore Purchases</string>
 
     // 3. Main Activity
-    <string name="scanning_button">Scanning</string>
+    <string name="scanning_button">Start</string>
     <string name="shooting_button">Shooting</string>
     <string name="points_label">Points</string>
     <string name="time_label">Time</string>
+    <string name="blaster">Blaster</string>
+    <string name="reticle">Reticle</string>
 
     <string name="place_toast">Tap to place targets!</string>
     <string name="two_toast">Please place at least two targets.</string>
@@ -65,9 +70,15 @@
     <string name="high_label">HIGH SCORES</string>
     <string name="f_score_label">Your score:</string>
     <string name="f_time_label">Your time:</string>
-    <string name="initial_label">Please enter your initials.</string>
+    <string name="targets_label">Targets:</string>
+    <string name="initial_label">Enter initials</string>
     <string name="save_button">Save Score</string>
     <string name="return_button">Main Menu</string>
+    <string name="clear_button">Clear Scoreboard</string>
+    <string name="initials">Initials</string>
+    <string name="score">Score</string>
+    <string name="time">Time</string>
+    <string name="targets">Targets</string>
 
     // 5. Owned Customizations
     <string name="owned_label">Customizations</string>

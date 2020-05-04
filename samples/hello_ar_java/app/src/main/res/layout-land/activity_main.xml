@@ -26,56 +26,51 @@
       android:layout_height="wrap_content"
       android:layout_alignParentStart="true"
       android:layout_alignParentTop="true"
-      android:layout_marginStart="10dp"
-      android:layout_marginTop="10dp"
+      android:layout_marginStart="@dimen/shoot_button_margin"
+      android:layout_marginTop="@dimen/shoot_button_margin"
       android:fontFamily="@font/space_font_ttf"
       android:text="@string/scanning_button" />
 
   <TextView
       android:id="@+id/pointsView"
-      android:layout_width="109dp"
-      android:layout_height="wrap_content"
-      android:layout_alignParentTop="true"
-      android:layout_alignParentRight="true"
-      android:layout_marginStart="65dp"
-      android:layout_marginTop="25dp"
-      android:layout_marginEnd="88dp"
-      android:layout_marginRight="357dp"
-      android:layout_toStartOf="@+id/timeView"
-      android:layout_toEndOf="@+id/switchButton"
-      android:width="200dp"
-      android:fontFamily="@font/space_font_ttf"
-      android:text="@string/points_label"
-      android:textAlignment="textStart"
-      android:textSize="20sp"
-      android:translationZ="10dp" />
-
-  <TextView
-      android:id="@+id/timeView"
-      android:layout_width="152dp"
+      android:layout_width="@dimen/label_width"
       android:layout_height="wrap_content"
       android:layout_alignParentTop="true"
       android:layout_alignParentEnd="true"
-      android:layout_alignParentRight="true"
-      android:layout_marginStart="262dp"
-      android:layout_marginTop="27dp"
-      android:layout_marginEnd="209dp"
-      android:layout_marginRight="210dp"
+      android:layout_marginStart="@dimen/land_points_left"
+      android:layout_marginTop="@dimen/label_margin_top"
+      android:layout_marginEnd="@dimen/land_points_right"
+      android:layout_toStartOf="@+id/timeView"
       android:layout_toEndOf="@+id/switchButton"
-      android:width="150dp"
+      android:fontFamily="@font/space_font_ttf"
+      android:text="@string/points_label"
+      android:textAlignment="textStart"
+      android:textSize="@dimen/text_size"
+      android:translationZ="@dimen/land_translate_z" />
+
+  <TextView
+      android:id="@+id/timeView"
+      android:layout_width="@dimen/label_width"
+      android:layout_height="wrap_content"
+      android:layout_alignParentTop="true"
+      android:layout_alignParentEnd="true"
+      android:layout_marginStart="@dimen/land_time_left"
+      android:layout_marginTop="@dimen/label_margin_top"
+      android:layout_marginEnd="@dimen/land_time_right"
+      android:layout_toEndOf="@+id/switchButton"
       android:fontFamily="@font/space_font_ttf"
       android:text="@string/time_label"
       android:textAlignment="textStart"
-      android:textSize="20sp"
-      android:translationZ="10dp" />
+      android:textSize="@dimen/text_size"
+      android:translationZ="@dimen/land_translate_z" />
 
   <ImageView
       android:id="@+id/imageReticle"
-      android:layout_width="153dp"
-      android:layout_height="58dp"
+      android:layout_width="@dimen/reticle_width"
+      android:layout_height="@dimen/reticle_height"
       android:layout_centerInParent="true"
-      android:contentDescription="blaster"
-      android:translationZ="10dp"
+      android:contentDescription="@string/reticle"
+      android:translationZ="@dimen/land_translate_z"
       app:srcCompat="@drawable/red_reticle" />
 
   <android.opengl.GLSurfaceView
@@ -85,17 +80,13 @@
 
   <ImageView
       android:id="@+id/imageBlaster"
-      android:layout_width="292dp"
-      android:layout_height="233dp"
-      android:layout_alignParentStart="true"
-      android:layout_alignParentTop="true"
+      android:layout_width="@dimen/blaster_width"
+      android:layout_height="@dimen/blaster_height"
       android:layout_alignParentEnd="true"
       android:layout_alignParentBottom="true"
-      android:layout_marginStart="446dp"
-      android:layout_marginTop="263dp"
-      android:layout_marginEnd="-7dp"
-      android:layout_marginBottom="-85dp"
-      android:contentDescription="blaster"
+      android:layout_marginEnd="@dimen/land_blaster_end"
+      android:layout_marginBottom="@dimen/land_blaster_bottom"
+      android:contentDescription="@string/blaster"
       app:srcCompat="@drawable/gun" />
 
 </RelativeLayout>
