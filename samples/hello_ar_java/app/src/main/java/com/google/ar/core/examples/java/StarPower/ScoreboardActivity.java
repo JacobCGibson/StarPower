@@ -132,6 +132,12 @@ public class ScoreboardActivity extends Activity implements View.OnClickListener
                 break;
         }
     }
+    
+    @Override
+    public void onBackPressed() {
+        //do nothing
+    }
+    
     public void runQuery(SQLiteDatabase db){
         String[] projection = {
                 ScoreboardAttr.ScoreboardEntry.COLUMN_INITIALS,
