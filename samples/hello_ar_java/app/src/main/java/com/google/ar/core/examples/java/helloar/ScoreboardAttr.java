@@ -1,4 +1,4 @@
-package com.google.ar.core.examples.java.StarPower;
+package com.google.ar.core.examples.java.helloar;
 
 import android.provider.BaseColumns;
 

@@ -13,7 +13,7 @@ def setVersionName = { ->
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.google.ar.core.examples.java.StarPower"
+        applicationId "com.google.ar.core.examples.java.helloar"
 
         // AR Optional apps must declare minSdkVersion >= 14.
         // AR Required apps must declare minSdkVersion >= 24.

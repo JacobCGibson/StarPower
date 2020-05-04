@@ -14,10 +14,11 @@
  * limitations under the License.
  */
 
-package com.google.ar.core.examples.java.StarPower;
+package com.google.ar.core.examples.java.helloar;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;

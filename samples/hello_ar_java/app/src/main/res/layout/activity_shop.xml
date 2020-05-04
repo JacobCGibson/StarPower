@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ShopActivity">
+
+
+    <Button
+        android:id="@+id/buttonMenu"
+        android:layout_width="181dp"
+        android:layout_height="48dp"
+        android:text="@string/s_menu_button"
+        android:textSize="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonMenu2"
+        android:layout_width="181dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="336dp"
+        android:text="@string/purchase_button"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonMenu3"
+        android:layout_width="181dp"
+        android:layout_height="48dp"
+        android:layout_marginLeft="104dp"
+        android:layout_marginTop="640dp"
+        android:text="@string/purchase_button"
+        android:textSize="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonShop"
+        android:layout_width="194dp"
+        android:layout_height="48dp"
+        android:text="@string/s_owned_button"
+        android:textSize="20dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/shop_label"
+        android:textSize="35dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buttonMenu" />
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textTitle"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="124dp" />
+
+
+    <TextView
+        android:id="@+id/card"
+        android:layout_width="130dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="155dp"
+        android:layout_marginEnd="2dp"
+        android:text="@string/custom_price1"
+        android:textSize="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/card1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/card4"
+        android:layout_width="130dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="441dp"
+        android:layout_marginEnd="2dp"
+        android:text="@string/custom_price2"
+        android:textSize="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/card3"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/card1"
+        android:layout_width="229dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="155dp"
+        android:text="@string/custom_label1"
+        android:textSize="30dp"
+        app:layout_constraintEnd_toStartOf="@+id/card"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/card3"
+        android:layout_width="229dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="441dp"
+        android:text="@string/custom_label2"
+        android:textSize="30dp"
+        app:layout_constraintEnd_toStartOf="@+id/card4"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/card2"
+        android:layout_width="414dp"
+        android:layout_height="105dp"
+        android:layout_marginTop="231dp"
+        android:text="@string/custom_descrip1"
+        android:textSize="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/card5"
+        android:layout_width="414dp"
+        android:layout_height="105dp"
+        android:layout_marginTop="535dp"
+        android:text="@string/custom_descrip2"
+        android:textSize="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</android.support.constraint.ConstraintLayout>

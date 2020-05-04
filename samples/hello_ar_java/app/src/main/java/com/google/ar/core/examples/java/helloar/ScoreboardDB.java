@@ -1,4 +1,4 @@
-package com.google.ar.core.examples.java.StarPower;
+package com.google.ar.core.examples.java.helloar;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
